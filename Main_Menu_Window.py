@@ -8,7 +8,9 @@ background_colour = (234, 212, 252)
 # Define the dimensions of
 # screen object(width,height)
 screen = pygame.display.set_mode((Main_Menu_Window_Width, Main_Menu_Window_Height))
-Start_Game_Button = button.Button(100  , 100 , Start_Button_Image , 1  )
+Start_Game_Button = button.Button(250  , 150 , Start_Button_Image , 1  )
+Option_Game_Button = button.Button(250  , 250 , Option_Button_Image , 1  )
+Exit_Game_Button = button.Button(250  , 350 , Exit_Button_Image , 1  )
 # Set the caption of the screen
 pygame.display.set_caption('LABOOMXA')
   
@@ -29,6 +31,8 @@ while running:
             running = False
     screen.blit(Main_Menu_Image, (0, 0))
     Start_Game_Button.draw(screen)
+    Option_Game_Button.draw(screen)
+    Exit_Game_Button.draw(screen)
     if(Start_Game_Button.isClicked(screen) == True) :
     	print(1)
     pygame.display.update()
