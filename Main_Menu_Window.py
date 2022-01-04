@@ -1,6 +1,6 @@
 from List_Modunle import *
 import Setting_Window
-
+import Game_Window
 Start_Game_Button = Button(250  , 150 , Start_Button_Image , 1)
 Option_Game_Button = Button(250  , 250 , Option_Button_Image , 1)
 Exit_Game_Button = Button(250  , 350 , Exit_Button_Image , 1)
@@ -30,7 +30,7 @@ def Main_Menu_Window():
         Exit_Game_Button.draw(Main_Menu_Screen)
 
         if(Start_Game_Button.isClicked(Main_Menu_Screen) == True):
-        	exit()
+        	Game_Window.run() 
         if(Option_Game_Button.isClicked(Main_Menu_Screen) == True):
             Setting_Window.Setting_Window()
             exit()
