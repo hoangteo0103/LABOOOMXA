@@ -1,3 +1,4 @@
-from Main_Menu_Window import *
+from List_Modunle import *
+import Main_Menu_Window
 
-Main_Menu_Window()
+Main_Menu_Window.Main_Menu_Window()

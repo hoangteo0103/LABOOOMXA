@@ -1,5 +1,6 @@
 import pygame
 
+# Main Menu Window Const
 Main_Menu_Window_Width = 800
 Main_Menu_Window_Height = 600
 
@@ -9,5 +10,6 @@ Start_Button_Image = pygame.image.load('Game_Data/Image/Start_Button_Image.png')
 Option_Button_Image = pygame.image.load('Game_Data/Image/Option_Button_Image.png')
 Exit_Button_Image = pygame.image.load('Game_Data/Image/Exit_Button_Image.png')
 
-
-#Main_Menu_Spirite = spritesheet.SpriteSheet(Main_Menu_Image)
+# Setting Window Const
+Setting_Window_Width = 800
+Setting_Window_Height = 600
