@@ -103,7 +103,7 @@ class Player() :
 		self.inMovement = 0 
 		self.counter_idle = 0
 		self.counter_move = 0  
-		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[0])
+		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[1])
 		for i in range(0,4 ) :
 			image_idle_right = sprite_sheet.get_image(i, 24, 24, 5, Black)
 			image_idle_left = pygame.transform.flip(image_idle_right, True, False)

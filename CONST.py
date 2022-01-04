@@ -14,7 +14,7 @@ Main_Menu_Image = pygame.transform.scale(Main_Menu_Image , (Main_Menu_Window_Wid
 Start_Button_Image = pygame.image.load('Game_Data/Image/Start_Button_Image.png')
 Option_Button_Image = pygame.image.load('Game_Data/Image/Option_Button_Image.png')
 Exit_Button_Image = pygame.image.load('Game_Data/Image/Exit_Button_Image.png')
-Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,2)]
+Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,5)]
 
 # Setting Window Const
 Setting_Window_Width = 800
