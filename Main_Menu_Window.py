@@ -1,11 +1,12 @@
 from List_Modunle import *
 import Setting_Window
 import Game_Window
-Start_Game_Button = Button(250  , 150 , Start_Button_Image , 1)
-Option_Game_Button = Button(250  , 250 , Option_Button_Image , 1)
-Exit_Game_Button = Button(250  , 350 , Exit_Button_Image , 1)
+Play_Game_Button = Button(280 , 150 , Play_Button_Image , 1)
+Setting_Game_Button = Button(280 , 250 , Setting_Button_Image , 1)
+Instruction_Game_Button = Button(280 , 350 , Instruction_Button_Image , 1)
+Quit_Game_Button = Button(280 , 450 , Quit_Button_Image , 1)
 
-def Main_Menu_Window():
+def Run():
     Main_Menu_Screen = pygame.display.set_mode((Main_Menu_Window_Width, Main_Menu_Window_Height))
 
     # Set the caption of the screen
@@ -25,16 +26,15 @@ def Main_Menu_Window():
                 running = False
 
         Main_Menu_Screen.blit(Main_Menu_Image, (0, 0))
-        Start_Game_Button.draw(Main_Menu_Screen)
-        Option_Game_Button.draw(Main_Menu_Screen)
-        Exit_Game_Button.draw(Main_Menu_Screen)
+        Play_Game_Button.draw(Main_Menu_Screen)
+        Setting_Game_Button.draw(Main_Menu_Screen)
+        Instruction_Game_Button.draw(Main_Menu_Screen)
+        Quit_Game_Button.draw(Main_Menu_Screen)
 
-        if(Start_Game_Button.isClicked(Main_Menu_Screen) == True):
-        	Game_Window.run() 
-        if(Option_Game_Button.isClicked(Main_Menu_Screen) == True):
-            Setting_Window.Setting_Window()
-            exit()
-        if(Exit_Game_Button.isClicked(Main_Menu_Screen) == True):
-            exit()
-
+        if(Play_Game_Button.isClicked(Main_Menu_Screen) == True):
+        	Game_Window.Run() 
+        if(Setting_Game_Button.isClicked(Main_Menu_Screen) == True):
+            Setting_Window.Run()
+        if(Quit_Game_Button.isClicked(Main_Menu_Screen) == True):
+            running = False
         pygame.display.update()
