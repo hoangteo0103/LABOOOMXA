@@ -13,8 +13,9 @@ class Player() :
 		death_cooldown = 5
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[pygame.K_SPACE] : 
-				bomb_list.append(Bomb(self.rect.x , self.rect.y , 3))
+			if key[pygame.K_SPACE]:
+				if( (self.rect.x - 264) % 48  == 0 ) and (self.rect.y % 48 == 0 ) : 
+					bomb_list.append(Bomb(self.rect.x , self.rect.y , 3))
 			if key[pygame.K_LEFT]:
 				dx -= 12
 				if self.inMovement == 1 :

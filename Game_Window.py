@@ -3,7 +3,7 @@ import Main_Menu_Window
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player1 = Player(314 , 48)
+	Player1 = Player(312 , 48)
 	
 	bomb_list = []
 	# Set the caption of the screen
