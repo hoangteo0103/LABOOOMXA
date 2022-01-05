@@ -1,5 +1,6 @@
 from List_Modunle import *
 import Main_Menu_Window
+from Play_Board import *
 
 def Run() :
 	Player1 = Player(100 , 100)
@@ -15,6 +16,8 @@ def Run() :
 	running = True	
 	clock = pygame.time.Clock()
 
+	Board  = Play_Board(1)
+
 	# game loop
 	while running:
 		clock.tick(10)
@@ -27,5 +30,6 @@ def Run() :
 
 
 		Game_Screen.fill(Black)
+		Board.Draw_Board(Game_Screen)
 		Player1.update(1,Game_Screen)
 		pygame.display.update()
