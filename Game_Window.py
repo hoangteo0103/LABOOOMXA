@@ -1,9 +1,9 @@
-import pygame
 from List_Modunle import *
+import Main_Menu_Window
 
 def Run() :
 	Player1 = Player(100 , 100)
-	Game_Screen = pygame.display.set_mode((Main_Menu_Window_Width, Main_Menu_Window_Height))
+	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
 
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
@@ -22,6 +22,9 @@ def Run() :
 			# Check for QUIT event      
 			if event.type == pygame.QUIT:
 				running = False
+				Main_Menu_Window.Run()
+				exit()
+
 
 		Game_Screen.fill(Black)
 		Player1.update(1,Game_Screen)
