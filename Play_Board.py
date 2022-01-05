@@ -6,13 +6,11 @@ class Play_Board():
 
 	def __init__(self, Map_State, background_list , destrucable_list , undestrucable_list):
 		for i in range(3):
-			Path = "Game_Data/Image/Map_" + str(Map_State) + "/tile_" + str(i) + ".png"
-			Image_tmp = pygame.image.load(Path)
+			Image_tmp = pygame.image.load(f'Game_Data/Image/Map_{Map_State}/tile_{i}.png')
 			Image_tmp = pygame.transform.scale(Image_tmp, (Cell_Width, Cell_Height))
 			self.Image.append(Image_tmp)
 
-		Path = "Game_Data/Image/Map_" + str(Map_State) + "/Map.txt"
-		Board_File = open(Path)
+		Board_File = open(f'Game_Data/Image/Map_{Map_State}/Map.txt')
 		Str = Board_File.read()
 
 		for t in range(0, len(Str)):
