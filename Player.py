@@ -1,11 +1,11 @@
 import pygame 
 from CONST import *
 import spritesheet
-
+from Bomb import * 
 class Player() : 
 	def __init__(self , x , y) :
 		self.reset(x , y) 
-	def update(self , alived , screen) :
+	def update(self , alived , screen , bomb_list ) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -13,8 +13,10 @@ class Player() :
 		death_cooldown = 5
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
+			if key[pygame.K_SPACE] : 
+				bomb_list.append(Bomb(self.rect.x , self.rect.y , 3))
 			if key[pygame.K_LEFT]:
-				dx -= 25
+				dx -= 12
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -24,7 +26,7 @@ class Player() :
 				self.inMovement = 1 
 				self.direction = -1
 			elif key[pygame.K_RIGHT]:
-				dx += 25
+				dx += 12
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -34,7 +36,7 @@ class Player() :
 				self.inMovement = 1
 				self.direction = 1
 			elif key[pygame.K_UP]:
-				dy -= 25
+				dy -= 12
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -44,7 +46,7 @@ class Player() :
 				self.inMovement = 1 
 				self.direction = -1
 			elif key[pygame.K_DOWN]:
-				dy += 25
+				dy += 12
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
