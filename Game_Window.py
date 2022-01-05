@@ -3,9 +3,9 @@ import Main_Menu_Window
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player1 = Player(100 , 100)
-	Bomb1 = Bomb(100 , 200 , 3)
-
+	Player1 = Player(312 , 48)
+	
+	bomb_list = []
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
 	  
@@ -31,6 +31,8 @@ def Run() :
 
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen)
-		Player1.update(1,Game_Screen)
-		Bomb1.draw(Game_Screen)
+		Player1.update(1,Game_Screen , bomb_list)
+		for t in bomb_list :
+			if t.draw(Game_Screen) == True :
+				bomb_list.remove(t)
 		pygame.display.update()
