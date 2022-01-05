@@ -4,7 +4,7 @@ class Play_Board():
 	Image = []
 	Board = [[-1 for i in range(20)] for j in range(20)]
 
-	def __init__(self, Map_State):
+	def __init__(self, Map_State, background_list , destrucable_list , undestrucable_list):
 		for i in range(3):
 			Path = "Game_Data/Image/Map_" + str(Map_State) + "/tile_" + str(i) + ".png"
 			Image_tmp = pygame.image.load(Path)
@@ -20,16 +20,39 @@ class Play_Board():
 			y = t % 18
 			if y == 17: continue
 			self.Board[x][y] = int(Str[t])
-
+			if self.Board[x][y] == 2 :
+				img = self.Image[2] 
+				rect = img.get_rect()
+				rect.x = 264 + y * Cell_Width
+				rect.y = x * Cell_Height
+				undestrucable_list.append( (img , rect) )
+			elif self.Board[x][y] == 1 :
+				img = self.Image[1]
+				rect = img.get_rect()
+				rect.x = 264 + y * Cell_Width
+				rect.y = x * Cell_Height
+				destrucable_list.append((img , rect))
+			elif self.Board[x][y] == 0 :
+				img = self.Image[0]
+				rect = img.get_rect()
+				rect.x = 264 + y * Cell_Width
+				rect.y = x * Cell_Height
+				background_list.append((img , rect))
 	def Print_Board(self):
 		for i in range(0, 15):
 			for j in range(0, 17):
 				print(self.Board[i][j], end = ' ')
 			print()
 
-	def Draw_Board(self, screen):
-		for i in range(15):
-			for j in range(17):
-				screen.blit(self.Image[0], (264 + j * Cell_Width, i * Cell_Height))
-				screen.blit(self.Image[self.Board[i][j]], (264 + j * Cell_Width, i * Cell_Height))
+	def Draw_Board(self, screen , background_list , destrucable_list , undestrucable_list):
+		for tile in background_list :
+			screen.blit(tile[0] , tile[1])
+		for tile in destrucable_list :
+			screen.blit(self.Image[0] , tile[1])
+			screen.blit(tile[0] , tile[1])
+		for tile in undestrucable_list :
+			screen.blit(self.Image[0] , tile[1])
+			screen.blit(tile[0] , tile[1])
+		
+
 

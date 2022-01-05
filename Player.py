@@ -5,18 +5,23 @@ from Bomb import *
 class Player() : 
 	def __init__(self , x , y) :
 		self.reset(x , y) 
-	def update(self , alived , screen , bomb_list, explosion_list) :
+		self.bomb = Bomb(-5,-5,0 ,[])
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
 		walk_cooldown = 0.60
 		death_cooldown = 5
+		if self.bomb.is_denotated() == True :
+			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[pygame.K_SPACE]:
+			if key[pygame.K_SPACE] and self.ok_bomb:
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
-				bomb_list.append(Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list))
+				self.ok_bomb = False
+				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list)
+				bomb_list.append(self.bomb)
 			if key[pygame.K_LEFT]:
 				dx -= 12
 				if self.inMovement == 1 :
@@ -61,7 +66,6 @@ class Player() :
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4
-				
 				self.counter_idle+=1
 				if self.direction == 1:
 					self.image = self.images_idle_right[self.index_idle]
@@ -90,23 +94,38 @@ class Player() :
 						self.image = self.images_idle_right[self.index_idle]
 					if self.direction == -1:
 						self.image = self.images_idle_left[self.index_idle]
-			#handle colision 
-			if len(bomb_list) > 0 :
-				for t in bomb_list :
-					if t.rect.colliderect(self.rect) and t.is_denotated() == True :
-						self.alived = 0
-
-			if len(explosion_list) > 0 :
-				for t in explosion_list :
-					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False :
-						self.alived = 0 
-						return
+			
 			 
 
 
 		#update player coordinates
+			
 			self.rect.x += dx
 			self.rect.y += dy
+			for tile in undestrucable_list :
+				if(tile[1].colliderect(self.rect)) : 
+					self.rect.x -= dx
+					self.rect.y -= dy
+			for tile in destrucable_list :
+				if(tile[1].colliderect(self.rect)) : 
+					self.rect.x -= dx
+					self.rect.y -= dy
+			#handle colision 
+			x = (self.rect.x - 264) // 48
+			y = (self.rect.y) // 48
+			if len(bomb_list) > 0 :
+				for t in bomb_list :
+					bomb_x = (t.rect.x - 264) // 48
+					bomb_y = (t.rect.y) // 48
+					if t.rect.colliderect(self.rect) and t.is_denotated() == True  :
+						self.alived = 0
+
+			if len(explosion_list) > 0 :
+				for t in explosion_list :
+					ex_x = (t.rect.x - 264) // 48
+					ex_y = (t.rect.y) // 48
+					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False  :
+						self.alived = 0 
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y) :
 		# idle frame from 0 to 3
@@ -118,6 +137,7 @@ class Player() :
 		self.index_move = 0
 		self.index_idle = 0  
 		self.alived = 1 
+		self.ok_bomb = True 
 		self.inMovement = 0 
 		self.counter_idle = 0
 		self.counter_move = 0  
