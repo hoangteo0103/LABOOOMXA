@@ -1,10 +1,10 @@
 from List_Modunle import *
 import Setting_Window
 import Game_Window
-Play_Game_Button = Button(280 , 300 , Play_Button_Image , 1)
-Setting_Game_Button = Button(280 , 400 , Setting_Button_Image , 1)
-Instruction_Game_Button = Button(280 , 500 , Instruction_Button_Image , 1)
-Quit_Game_Button = Button(280 , 600 , Quit_Button_Image , 1)
+Play_Game_Button = Button(280 , 200 , Play_Button_Image , 1)
+Setting_Game_Button = Button(280 , 320 , Setting_Button_Image , 1)
+Instruction_Game_Button = Button(280 , 440 , Instruction_Button_Image , 1)
+Quit_Game_Button = Button(280 , 560 , Quit_Button_Image , 1)
 
 def Run():
     Main_Menu_Screen = pygame.display.set_mode((Main_Menu_Window_Width, Main_Menu_Window_Height))
