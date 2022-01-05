@@ -21,13 +21,13 @@ class Button() :
 
 		if self.rect.collidepoint(pos):
 			self.image.set_alpha(255)
-			print(1)
 		else:
 			self.image.set_alpha(220)
 		screen.blit(self.image , (self.rect.x , self.rect.y))
 
 	def isClicked(self , screen): 
 		action = False 
+
 		pos = pygame.mouse.get_pos()
 		if self.rect.collidepoint(pos) :
 			if(pygame.mouse.get_pressed()[0] == 1  and self.clicked == False) :
