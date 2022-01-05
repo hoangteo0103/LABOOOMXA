@@ -5,7 +5,7 @@ from Bomb import *
 class Player() : 
 	def __init__(self , x , y) :
 		self.reset(x , y) 
-	def update(self , alived , screen , bomb_list ) :
+	def update(self , alived , screen , bomb_list, explosion_list) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -16,8 +16,7 @@ class Player() :
 			if key[pygame.K_SPACE]:
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
-				print(x , y)
-				bomb_list.append(Bomb((264 + 48 * x) , y * 48 , 3))
+				bomb_list.append(Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list))
 			if key[pygame.K_LEFT]:
 				dx -= 12
 				if self.inMovement == 1 :
@@ -91,6 +90,20 @@ class Player() :
 						self.image = self.images_idle_right[self.index_idle]
 					if self.direction == -1:
 						self.image = self.images_idle_left[self.index_idle]
+			#handle colision 
+			if len(bomb_list) > 0 :
+				for t in bomb_list :
+					if t.rect.colliderect(self.rect) and t.is_denotated() == True :
+						self.alived = 0
+
+			if len(explosion_list) > 0 :
+				for t in explosion_list :
+					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False :
+						self.alived = 0 
+						return
+			 
+
+
 		#update player coordinates
 			self.rect.x += dx
 			self.rect.y += dy

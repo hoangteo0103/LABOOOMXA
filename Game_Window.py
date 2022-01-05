@@ -6,6 +6,7 @@ def Run() :
 	Player1 = Player(312 , 48)
 	
 	bomb_list = []
+	explosion_list = []
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
 	  
@@ -31,8 +32,14 @@ def Run() :
 
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen)
-		Player1.update(1,Game_Screen , bomb_list)
-		for t in bomb_list :
-			if t.draw(Game_Screen) == True :
-				bomb_list.remove(t)
+		Player1.update(Player1.alived,Game_Screen , bomb_list , explosion_list)
+		if len(explosion_list) > 0 :
+				for t in explosion_list :
+					if t.is_denotated() == True :
+						explosion_list.remove(t)
+		if len(bomb_list) > 0 :
+			for t in bomb_list :
+				if t.draw(Game_Screen) == True :
+					bomb_list.remove(t)
+		
 		pygame.display.update()
