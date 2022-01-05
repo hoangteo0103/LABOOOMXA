@@ -23,7 +23,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			if key[pygame.K_RIGHT]:
+			elif key[pygame.K_RIGHT]:
 				dx += 25
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -33,7 +33,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			if key[pygame.K_UP]:
+			elif key[pygame.K_UP]:
 				dy -= 25
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -43,7 +43,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			if key[pygame.K_DOWN]:
+			elif key[pygame.K_DOWN]:
 				dy += 25
 				if self.inMovement == 1 :
 					self.counter_move += 1
