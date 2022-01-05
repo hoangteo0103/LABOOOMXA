@@ -27,3 +27,7 @@ right_explosion = [pygame.transform.flip(left_explosion[i], True, False) for i i
 up_explosion = [pygame.transform.rotate(left_explosion[i] , 270) for i in range(0 , 40)]
 down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range(0 , 40)]
 explosion_frames = [left_explosion , right_explosion , up_explosion , down_explosion ]
+
+# Cell Const
+Cell_Width = 48
+Cell_Height = 48
