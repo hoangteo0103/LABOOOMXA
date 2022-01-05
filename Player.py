@@ -19,6 +19,10 @@ class Player() :
 			if key[pygame.K_SPACE] and self.ok_bomb:
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
+				if (self.rect.x - 264) % 48 != 0:
+					x += 1
+				if (self.rect.y) % 48 != 0:
+					y += 1
 				self.ok_bomb = False
 				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list)
 				bomb_list.append(self.bomb)
