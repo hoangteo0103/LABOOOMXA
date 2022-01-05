@@ -13,9 +13,16 @@ class Explosion():
 		self.rect.x = x 
 		self.rect.y = y 
 		self.cc = 1 
-	def draw(self , screen) : 
+	def draw(self , screen , background_list , destrucable_list , undestrucable_list) : 
 		self.render = True 
 		self.counter+=1 
+		for tile in undestrucable_list :
+			if(tile[1].colliderect(self.rect)) : 
+				return 
+		for tile in destrucable_list :
+			if(tile[1].colliderect(self.rect)) :
+				destrucable_list.remove(tile)
+				background_list.append((background_list[0][0] ,tile[1]))
 		if(self.counter > self.delay) :
 			self.counter = 0 
 			self.index+=1

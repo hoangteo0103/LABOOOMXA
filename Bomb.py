@@ -2,7 +2,7 @@ from List_Modunle import *
 from Explosions import * 
 import pygame
 class Bomb():
-	def __init__(self , x, y , len , explosion_list) :
+	def __init__(self , x, y , len , explosion_list , ) :
 
 		self.denotated = False 
 		self.delay_start = 20 
@@ -34,7 +34,13 @@ class Bomb():
 		self.rect = self.image.get_rect()
 		self.rect.x = x 
 		self.rect.y = y 
-	def draw(self , screen) : 
+	def draw(self , screen , background_list , destrucable_list , undestrucable_list) : 
+		for tile in undestrucable_list :
+			if(tile[1].colliderect(self.rect)) : 
+				return 
+		for tile in destrucable_list :
+			if(tile[1].colliderect(self.rect)) : 
+				return 
 		self.counter_start+=1
 		if(self.counter_start > self.delay_start) :
 			self.counter+=1 
@@ -48,7 +54,7 @@ class Bomb():
 						self.explosion[i].denotated = True 
 					return True 
 				for i in range(0  , self.id * 4 ) :
-					self.explosion[i].draw(screen)
+					self.explosion[i].draw(screen,background_list , destrucable_list , undestrucable_list)
 			if(self.counter > self.delay) :
 				self.counter = 0 
 				self.index+=1
