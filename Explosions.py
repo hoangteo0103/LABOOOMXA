@@ -1,12 +1,13 @@
 from List_Modunle import *
 import pygame
 class Explosion():
-	def __init__(self , x, y , dir) :
+	def __init__(self , x, y , dir , is_render ) :
 		self.denotated = False 
 		self.counter = 0 
 		self.index = 0
 		self.delay = 6
 		self.render = False 
+		self.is_render = is_render
 		self.frames = explosion_frames[dir]
 		self.image = self.frames[0]
 		self.rect = self.image.get_rect()
@@ -14,6 +15,8 @@ class Explosion():
 		self.rect.y = y 
 		self.cc = 1 
 	def draw(self , screen , background_list , destrucable_list , undestrucable_list) : 
+		if(self.is_render == True) :
+			return 
 		self.render = True 
 		self.counter+=1 
 		for tile in undestrucable_list :

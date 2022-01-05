@@ -2,8 +2,13 @@ from List_Modunle import *
 from Explosions import * 
 import pygame
 class Bomb():
-	def __init__(self , x, y , len , explosion_list , ) :
+	def __init__(self , x, y , len , explosion_list , background_list , destrucable_list , undestrucable_list) :
 
+		self.frames = bomb_frames
+		self.image = self.frames[0]
+		self.rect = self.image.get_rect()
+		self.rect.x = x 
+		self.rect.y = y 
 		self.denotated = False 
 		self.delay_start = 20 
 		self.counter_start = 0 
@@ -16,24 +21,34 @@ class Bomb():
 		self.counter_rear = 0 
 		self.delay_rear = 2
 		self.id = 0 
+		previous = [False for i in range(1,5)]
 		for i in range(1 , len + 1) : 
-			left  = Explosion(x + i * 48 , y , 0)
-			right = Explosion(x - i * 48 , y , 1)
-			up    = Explosion(x , y - i * 48 , 3)
-			down  =  Explosion(x , y + i  * 48  , 2)
-			explosion_list.append(left)
-			explosion_list.append(right)
-			explosion_list.append(up)
-			explosion_list.append(down)
-			self.explosion.append(left)
-			self.explosion.append(right)
-			self.explosion.append(up)
-			self.explosion.append(down)
-		self.frames = bomb_frames
-		self.image = self.frames[0]
-		self.rect = self.image.get_rect()
-		self.rect.x = x 
-		self.rect.y = y 
+			for id in range (0 , 4 ) : 
+				new_x = x 
+				new_y = y
+				if id == 0 :
+					new_x = x + i * 48 
+				if id == 1 :
+					new_x = x - i * 48
+				if id == 2 :
+					new_y = y - i * 48
+				if id == 3 :
+					new_y = y + i * 48
+				img  =  Explosion(new_x , new_y  , id , previous[id] )
+				rect = img.image.get_rect()
+				rect.x = new_x 
+				rect.y = new_y
+				self.explosion.append(img)
+				explosion_list.append(img)
+				for tile in undestrucable_list :
+					if(tile[1].colliderect(rect)) : 
+						 previous[id] = True
+				for tile in destrucable_list :
+					if(tile[1].colliderect(rect)) :
+						previous[id] = True
+				
+		
+		
 	def draw(self , screen , background_list , destrucable_list , undestrucable_list) : 
 		for tile in undestrucable_list :
 			if(tile[1].colliderect(self.rect)) : 

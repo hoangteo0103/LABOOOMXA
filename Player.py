@@ -5,7 +5,7 @@ from Bomb import *
 class Player() : 
 	def __init__(self , x , y) :
 		self.reset(x , y) 
-		self.bomb = Bomb(-5,-5,0 ,[])
+		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list) :
 		dx = 0 
 		dy = 0 
@@ -20,7 +20,7 @@ class Player() :
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
 				self.ok_bomb = False
-				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list)
+				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list)
 				bomb_list.append(self.bomb)
 			if key[pygame.K_LEFT]:
 				dx -= 12
