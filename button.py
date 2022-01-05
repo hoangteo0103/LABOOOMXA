@@ -14,6 +14,10 @@ class Button() :
 
 	def draw(self , screen):
 		pos = pygame.mouse.get_pos()
+		if self.rect.collidepoint(pos) :
+			self.image.set_alpha(255)
+		else:
+			self.image.set_alpha(200)
 
 		if self.rect.collidepoint(pos):
 			self.image.set_alpha(255)

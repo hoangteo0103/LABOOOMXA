@@ -5,13 +5,12 @@ import spritesheet
 Main_Menu_Window_Width = 800
 Main_Menu_Window_Height = 720
 Setting_Window_Width = 800
-Setting_Window_Height = 600
+Setting_Window_Height = 720
 Game_Window_Width = 1080
 Game_Window_Height = 720
 
 # Color Const 
 Black = (0,0,0) 
-
 
 # Image
 Main_Menu_Image = pygame.image.load('Game_Data/Image/Main_Menu_Background.jpg')
