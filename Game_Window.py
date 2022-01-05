@@ -1,7 +1,7 @@
 import pygame
 from List_Modunle import *
 
-def run() :
+def Run() :
 	Player1 = Player(100 , 100)
 	Game_Screen = pygame.display.set_mode((Main_Menu_Window_Width, Main_Menu_Window_Height))
 

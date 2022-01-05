@@ -2,7 +2,7 @@ import pygame
 import spritesheet
 # Main Menu Window Const
 Main_Menu_Window_Width = 800
-Main_Menu_Window_Height = 600
+Main_Menu_Window_Height = 720
 
 #Color Const 
 Black = (0,0,0) 
