@@ -14,8 +14,10 @@ class Player() :
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
 			if key[pygame.K_SPACE]:
-				if( (self.rect.x - 264) % 48  == 0 ) and (self.rect.y % 48 == 0 ) : 
-					bomb_list.append(Bomb(self.rect.x , self.rect.y , 3))
+				x = (self.rect.x - 264) // 48
+				y = (self.rect.y) // 48
+				print(x , y)
+				bomb_list.append(Bomb((264 + 48 * x) , y * 48 , 3))
 			if key[pygame.K_LEFT]:
 				dx -= 12
 				if self.inMovement == 1 :
