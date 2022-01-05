@@ -27,6 +27,8 @@ up_explosion = [pygame.transform.rotate(left_explosion[i] , 270) for i in range(
 down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range(0 , 40)]
 explosion_frames = [left_explosion , right_explosion , up_explosion , down_explosion ]
 
+bomb_image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Bomb_Image.png') , (48 , 48)) 
+bomb_image.set_colorkey((100, 100,100))
 # Cell Const
 Cell_Width = 48
 Cell_Height = 48

@@ -5,7 +5,7 @@ class Bomb():
 	def __init__(self , x, y , len , explosion_list , background_list , destrucable_list , undestrucable_list) :
 
 		self.frames = bomb_frames
-		self.image = self.frames[0]
+		self.image = bomb_image 
 		self.rect = self.image.get_rect()
 		self.rect.x = x 
 		self.rect.y = y 
