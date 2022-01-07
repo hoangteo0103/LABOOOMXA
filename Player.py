@@ -106,14 +106,33 @@ class Player() :
 			
 			self.rect.x += dx
 			self.rect.y += dy
+			Num_Collide = 0
+			Pos_Collide = self.rect
 			for tile in undestrucable_list :
 				if(tile[1].colliderect(self.rect)) : 
-					self.rect.x -= dx
-					self.rect.y -= dy
+					Num_Collide += 1
+					Pos_Collide = tile[1]
 			for tile in destrucable_list :
 				if(tile[1].colliderect(self.rect)) : 
+					Num_Collide += 1
+					Pos_Collide = tile[1]
+			if (dx != 0) or (dy != 0):
+				if Num_Collide > 0:
 					self.rect.x -= dx
 					self.rect.y -= dy
+					print(Num_Collide)
+					if Num_Collide == 1:
+						if abs(Pos_Collide.x - self.rect.x) == Cell_Width:
+							if self.rect.y < Pos_Collide.y:
+								self.rect.y -= 12
+							elif self.rect.y > Pos_Collide.y:
+								self.rect.y += 12
+						else:
+							if self.rect.x < Pos_Collide.x:
+								self.rect.x -= 12
+							elif self.rect.x > Pos_Collide.x:
+								self.rect.x += 12
+
 			#handle colision 
 			x = (self.rect.x - 264) // 48
 			y = (self.rect.y) // 48
