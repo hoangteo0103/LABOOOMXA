@@ -19,7 +19,13 @@ Play_Button_Image = pygame.image.load('Game_Data/Image/Play_Button_Image.png')
 Setting_Button_Image = pygame.image.load('Game_Data/Image/Setting_Button_Image.png')
 Instruction_Button_Image = pygame.image.load('Game_Data/Image/Instruction_Button_Image.png')
 Quit_Button_Image = pygame.image.load('Game_Data/Image/Quit_Button_Image.png')
-Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,5)]
+Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,8)]
+Num_Idle_Frames = [4 , 4 , 4 , 4 , 9 , 18 , 9 ]
+Num_Move_Frames = [10 , 10 , 10 , 10 , 22 , 42 , 17]
+
+Heigh_Frames = [24 , 24 , 24 , 24 , 80 ,  80 , 64]
+Width_Frames = [24 , 24 , 24 , 24 , 120 , 80 , 64 ]
+
 bomb_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/bombs/tile0{i}.png') , (48 , 48 ) ) for i in range(0,12)]
 left_explosion = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/explosions/img_{i}.png') , (48 , 48 ) ) for i in range(0,40)]
 right_explosion = [pygame.transform.flip(left_explosion[i], True, False) for i in range(0,40)]

@@ -3,7 +3,7 @@ import Main_Menu_Window
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player1 = Player(312 , 48)
+	Player1 = Player(312 , 48 , 6)
 	
 	bomb_list = []
 	explosion_list = []
@@ -24,7 +24,7 @@ def Run() :
 
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
-	death_cooldown = 60 
+	death_cooldown = 1
 	while running:
 		clock.tick(10)
 		for event in pygame.event.get():
@@ -50,7 +50,7 @@ def Run() :
 			if(death_counter[0] > death_cooldown) :
 				death_counter[0] = 0 
 				Player1.alived = 1 
-				Player1.reset(312 , 48)
+				Player1.reset(312 , 48 , 6 )
 		if(Player1.alived == 1 ) :
 			Player1.update(Player1.alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list )
 		

@@ -3,8 +3,8 @@ from CONST import *
 import spritesheet
 from Bomb import * 
 class Player() : 
-	def __init__(self , x , y) :
-		self.reset(x , y) 
+	def __init__(self , x , y ,skin_id ) :
+		self.reset(x , y , skin_id ) 
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
 		self.speed = 12
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list) :
@@ -150,7 +150,7 @@ class Player() :
 					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False  :
 						self.alived = 0 
 			screen.blit(self.image, self.rect)
-	def reset(self , x , y) :
+	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3
 		# move frame from 4 to 10
 		self.images_idle_right = []
@@ -164,15 +164,17 @@ class Player() :
 		self.inMovement = 0 
 		self.counter_idle = 0
 		self.counter_move = 0  
-		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[3])
-		for i in range(0,4 ) :
-			image_idle_right = sprite_sheet.get_image(i, 24, 24, 5, Black)
+		width = Width_Frames[skin_id]
+		height = Heigh_Frames[skin_id]
+		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[skin_id])
+		for i in range(0,Num_Idle_Frames[skin_id] ) :
+			image_idle_right = sprite_sheet.get_image(i,width , height, 10, Black)
 			image_idle_right = pygame.transform.scale(image_idle_right , (16 * 3,16 * 3))
 			image_idle_left = pygame.transform.flip(image_idle_right, True, False)
 			self.images_idle_right.append(image_idle_right)
 			self.images_idle_left.append(image_idle_left)
-		for i in range(4,11 ) :
-			image_move_right = sprite_sheet.get_image(i, 24, 24, 5, Black)
+		for i in range(Num_Idle_Frames[skin_id],Num_Move_Frames[skin_id] ) :
+			image_move_right = sprite_sheet.get_image(i, width, height,10, Black)
 			image_move_right = pygame.transform.scale(image_move_right , (16 * 3,16 * 3))
 			image_move_left = pygame.transform.flip(image_move_right, True, False)
 			self.images_move_right.append(image_move_right)
