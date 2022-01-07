@@ -6,6 +6,7 @@ class Player() :
 	def __init__(self , x , y) :
 		self.reset(x , y) 
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
+		self.speed = 12
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list) :
 		dx = 0 
 		dy = 0 
@@ -27,7 +28,7 @@ class Player() :
 				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list)
 				bomb_list.append(self.bomb)
 			if key[pygame.K_LEFT]:
-				dx -= 12
+				dx -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -37,7 +38,7 @@ class Player() :
 				self.inMovement = 1 
 				self.direction = -1
 			elif key[pygame.K_RIGHT]:
-				dx += 12
+				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -47,7 +48,7 @@ class Player() :
 				self.inMovement = 1
 				self.direction = 1
 			elif key[pygame.K_UP]:
-				dy -= 12
+				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -57,7 +58,7 @@ class Player() :
 				self.inMovement = 1 
 				self.direction = -1
 			elif key[pygame.K_DOWN]:
-				dy += 12
+				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
 				else :
@@ -123,14 +124,14 @@ class Player() :
 					if Num_Collide == 1:
 						if abs(Pos_Collide.x - self.rect.x) == Cell_Width:
 							if self.rect.y < Pos_Collide.y:
-								self.rect.y -= 12
+								self.rect.y -= self.speed
 							elif self.rect.y > Pos_Collide.y:
-								self.rect.y += 12
+								self.rect.y += self.speed
 						else:
 							if self.rect.x < Pos_Collide.x:
-								self.rect.x -= 12
+								self.rect.x -= self.speed
 							elif self.rect.x > Pos_Collide.x:
-								self.rect.x += 12
+								self.rect.x += self.speed
 
 			#handle colision 
 			x = (self.rect.x - 264) // 48
