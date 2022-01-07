@@ -120,7 +120,6 @@ class Player() :
 				if Num_Collide > 0:
 					self.rect.x -= dx
 					self.rect.y -= dy
-					print(Num_Collide)
 					if Num_Collide == 1:
 						if abs(Pos_Collide.x - self.rect.x) == Cell_Width:
 							if self.rect.y < Pos_Collide.y:
