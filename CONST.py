@@ -42,7 +42,6 @@ bubble_image = pygame.transform.scale(pygame.image.load("Game_Data/Image/Item/bu
 bubble_image.set_colorkey((100, 100,100))
 
 bomb_image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Bomb_Image.png') , (48 , 48)) 
-bomb_image.set_colorkey((100, 100,100))
 
 # Cell Const
 Cell_Width = 48

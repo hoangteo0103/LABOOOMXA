@@ -14,7 +14,7 @@ class Bomb():
 		self.counter_start = 0 
 		self.counter = 0 
 		self.index = 0
-		self.delay = 1
+		self.delay = 0.6
 		self.explosion = []
 		self.clock = pygame.time.Clock()
 		self.len = len
