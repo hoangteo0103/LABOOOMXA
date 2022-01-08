@@ -32,10 +32,10 @@ Heigh_Frames = [24 , 24 , 24 , 24 , 80 ,  80 , 64]
 Width_Frames = [24 , 24 , 24 , 24 , 120 , 80 , 64 ]
 
 bomb_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/bombs/tile0{i}.png') , (48 , 48 ) ) for i in range(0,12)]
-left_explosion = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/explosions/img_{i}.png') , (48 , 48 ) ) for i in range(0,40)]
-right_explosion = [pygame.transform.flip(left_explosion[i], True, False) for i in range(0,40)]
-up_explosion = [pygame.transform.rotate(left_explosion[i] , 270) for i in range(0 , 40)]
-down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range(0 , 40)]
+left_explosion = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/explosions/noemi-coute-laser-{i}.png') , (48 , 48 ) ) for i in range(0,4)]
+right_explosion = [pygame.transform.flip(left_explosion[i], True, False) for i in range(0,4)]
+up_explosion = [pygame.transform.rotate(left_explosion[i] , 270) for i in range(0 , 4)]
+down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range(0 , 4)]
 explosion_frames = [left_explosion , right_explosion , up_explosion , down_explosion ]
 
 bubble_image = pygame.transform.scale(pygame.image.load("Game_Data/Image/Item/bubble.png"), (48, 48))
