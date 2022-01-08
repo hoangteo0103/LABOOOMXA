@@ -21,7 +21,7 @@ class Bomb():
 		self.counter_rear = 0 
 		self.delay_rear = 1
 		self.id = 0 
-		previous = [False for i in range(1,5)]
+		previous = [False for i in range(1,10)]
 		for i in range(1 , len + 1) : 
 			for id in range (0 , 4 ) : 
 				new_x = x 
@@ -68,7 +68,7 @@ class Bomb():
 					for i in range(0  , (self.id - 1 ) * 4 ) :
 						self.explosion[i].denotated = True 
 					return True 
-				for i in range(0  , self.id * 4 ) :
+				for i in range(0  , self.id * 4) :
 					self.explosion[i].draw(screen,background_list , destrucable_list , undestrucable_list , item_list)
 			if(self.counter > self.delay) :
 				self.counter = 0 
