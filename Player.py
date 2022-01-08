@@ -5,10 +5,10 @@ from Bomb import *
 class Player() : 
 	def __init__(self , x , y , skin_id) :
 		self.reset(x , y , skin_id ) 
-		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
+		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[] , [])
 		self.speed = 12
 		self.player_lives = 3 
-	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , skin_id , player_lives ) :
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , item_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -26,7 +26,7 @@ class Player() :
 				if (self.rect.y) % 48 != 0:
 					y += 1
 				self.ok_bomb = False
-				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list)
+				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
 				bomb_list.append(self.bomb)
 			if key[Key_List[skin_id][1]]:
 				dx -= self.speed
@@ -153,6 +153,12 @@ class Player() :
 						if self.alived == 1 : 
 							self.alived = 0
 							self.player_lives-=1  
+			if len(item_list) > 0 :
+				for t in item_list :
+					if t.rect.colliderect(self.rect) :
+						if(t.state == 0) :
+							self.player_lives+=1
+							item_list.remove(t)
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3

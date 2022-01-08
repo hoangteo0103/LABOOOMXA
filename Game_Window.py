@@ -11,6 +11,7 @@ def Run() :
 	destrucable_list = []
 	undestrucalbe_list = []
 	background_list = []
+	item_list = []
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
 	  
@@ -22,11 +23,12 @@ def Run() :
 	clock = pygame.time.Clock()
 
 	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucalbe_list )
-	Item1 = Item(312 , 48 , 0)
+	Item1 = Item(360 , 48 , 0)
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
 	player_lives  = [3,  3 , 3 , 3 ]
 	death_cooldown = 25
+	item_list.append(Item1)
 	while running:
 		clock.tick(10)
 		for event in pygame.event.get():
@@ -39,16 +41,17 @@ def Run() :
 
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucalbe_list)
-		Item1.draw(Game_Screen)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
 						explosion_list.remove(t)
 		if len(bomb_list) > 0 :
 			for t in bomb_list :
-				if t.draw(Game_Screen,background_list , destrucable_list , undestrucalbe_list) == True :
+				if t.draw(Game_Screen,background_list , destrucable_list , undestrucalbe_list , item_list) == True :
 					bomb_list.remove(t)
-		print(player_lives[0])
+		if len(item_list) > 0 :
+			for t in item_list :
+				t.draw(Game_Screen)
 		for i in range(2):
 			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
 				death_counter[0]+=1
@@ -57,7 +60,7 @@ def Run() :
 					Player_List[i].alived = 1 
 					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
 			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
-				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list , i ,Player_List[i].player_lives)
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list , item_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()
