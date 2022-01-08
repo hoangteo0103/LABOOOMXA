@@ -3,8 +3,9 @@ import Main_Menu_Window
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player1 = Player(312 , 48 , 3)
-	
+	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
+	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
+
 	bomb_list = []
 	explosion_list = []
 	destrucable_list = []
@@ -45,14 +46,15 @@ def Run() :
 			for t in bomb_list :
 				if t.draw(Game_Screen,background_list , destrucable_list , undestrucalbe_list) == True :
 					bomb_list.remove(t)
-		if(Player1.alived == 0) :
-			death_counter[0]+=1
-			if(death_counter[0] > death_cooldown) :
-				death_counter[0] = 0 
-				Player1.alived = 1 
-				Player1.reset(312 , 48 , 3)
-		if(Player1.alived == 1 ) :
-			Player1.update(Player1.alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list )
+		for i in range(4):
+			if(Player_List[i].alived == 0) :
+				death_counter[0]+=1
+				if(death_counter[0] > death_cooldown) :
+					death_counter[0] = 0 
+					Player_List[i].alived = 1 
+					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
+			if(Player_List[i].alived == 1 ) :
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list )
 		
 		
 		pygame.display.update()
