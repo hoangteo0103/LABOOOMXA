@@ -19,7 +19,7 @@ class Bomb():
 		self.clock = pygame.time.Clock()
 		self.len = len
 		self.counter_rear = 0 
-		self.delay_rear = 2
+		self.delay_rear = 1
 		self.id = 0 
 		previous = [False for i in range(1,5)]
 		for i in range(1 , len + 1) : 
