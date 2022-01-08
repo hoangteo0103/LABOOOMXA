@@ -55,6 +55,7 @@ Player_Key.append([pygame.K_g , pygame.K_a , pygame.K_d , pygame.K_w , pygame.K_
 
 Key_List = []
 Key_Image = []
+Key_Pos = [10 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 23 , 41 , 38 , 25 , 14 , 26 , 27 , 28 , 19 , 29 , 30 , 31 , 43 , 42 , 20 , 21 , 12 , 15 , 24 , 16 , 18 , 40 , 13 , 37 , 17 , 36 , 35 , 44 , 11 , 34 , 45 , 22 , 32 , 39 , 0 , 46 , 48 , 33 , 47]
 for i in range(10):
 	Key_List.append(pygame.key.key_code(str(i)))
 	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
