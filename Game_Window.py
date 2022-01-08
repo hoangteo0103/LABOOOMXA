@@ -22,7 +22,7 @@ def Run() :
 	clock = pygame.time.Clock()
 
 	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucalbe_list )
-
+	Item1 = Item(312 , 48 , 0)
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
 	player_lives  = [3,  3 , 3 , 3 ]
@@ -39,6 +39,7 @@ def Run() :
 
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucalbe_list)
+		Item1.draw(Game_Screen)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
