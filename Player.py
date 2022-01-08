@@ -163,7 +163,7 @@ class Player() :
 						if(t.state == 1) :
 							self.power += 1
 							item_list.remove(t)
-
+			screen.blit(bubble_image, self.rect)
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3
