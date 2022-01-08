@@ -161,7 +161,8 @@ class Player() :
 					self.shield = 0
 				else :
 					self.shield = 0
-					self.alived = 0 					
+					self.alived = 0 
+					self.player_lives -= 1					
 			if len(item_list) > 0 :
 				for t in item_list :
 					if t.rect.colliderect(self.rect) :
