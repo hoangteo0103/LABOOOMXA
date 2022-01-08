@@ -35,6 +35,12 @@ explosion_frames = [left_explosion , right_explosion , up_explosion , down_explo
 
 bomb_image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Bomb_Image.png') , (48 , 48)) 
 bomb_image.set_colorkey((100, 100,100))
+
 # Cell Const
 Cell_Width = 48
 Cell_Height = 48
+
+# Key Const
+Key_List = []
+Key_List.append([pygame.K_SPACE , pygame.K_LEFT , pygame.K_RIGHT , pygame.K_UP , pygame.K_DOWN])
+Key_List.append([pygame.K_g , pygame.K_a , pygame.K_d , pygame.K_w , pygame.K_s])
