@@ -20,7 +20,7 @@ class Player() :
 			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[Player_Key[skin_id][0]] and self.ok_bomb:
+			if key[Key_List[Player_Key[skin_id][0]]] and self.ok_bomb:
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
 				if (self.rect.x - 264) % 48 != 0:
@@ -30,7 +30,7 @@ class Player() :
 				self.ok_bomb = False
 				self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
 				bomb_list.append(self.bomb)
-			if key[Player_Key[skin_id][1]]:
+			if key[Key_List[Player_Key[skin_id][1]]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -40,7 +40,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[Player_Key[skin_id][2]]:
+			elif key[Key_List[Player_Key[skin_id][2]]]:
 				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -50,7 +50,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			elif key[Player_Key[skin_id][3]]:
+			elif key[Key_List[Player_Key[skin_id][3]]]:
 				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -60,7 +60,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[Player_Key[skin_id][4]]:
+			elif key[Key_List[Player_Key[skin_id][4]]]:
 				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -70,7 +70,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			if key[Player_Key[skin_id][1]] == False and key[Player_Key[skin_id][2]] == False and key[Player_Key[skin_id][3]] == False and key[Player_Key[skin_id][4]] == False:
+			if key[Key_List[Player_Key[skin_id][1]]] == False and key[Key_List[Player_Key[skin_id][2]]] == False and key[Key_List[Player_Key[skin_id][3]]] == False and key[Key_List[Player_Key[skin_id][4]]] == False:
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4
