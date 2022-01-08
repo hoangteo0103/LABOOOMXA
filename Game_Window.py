@@ -23,12 +23,11 @@ def Run() :
 	clock = pygame.time.Clock()
 
 	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucalbe_list )
-	Item1 = Item(360 , 48 , 0)
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
 	player_lives  = [3,  3 , 3 , 3 ]
 	death_cooldown = 25
-	item_list.append(Item1)
+	item_list = []
 	while running:
 		clock.tick(10)
 		for event in pygame.event.get():

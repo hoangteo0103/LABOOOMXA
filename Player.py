@@ -174,7 +174,6 @@ class Player() :
 						if(t.state == 2) :
 							self.shield = 1 
 							item_list.remove(t)
-			print(self.shield)
 			if(self.shield == 1) :
 				screen.blit(bubble_image, self.rect)
 			screen.blit(self.image, self.rect)
