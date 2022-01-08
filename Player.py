@@ -3,11 +3,11 @@ from CONST import *
 import spritesheet
 from Bomb import * 
 class Player() : 
-	def __init__(self , x , y ,skin_id ) :
+	def __init__(self , x , y , skin_id) :
 		self.reset(x , y , skin_id ) 
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
 		self.speed = 12
-	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list) :
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , skin_id) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -17,7 +17,7 @@ class Player() :
 			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[pygame.K_SPACE] and self.ok_bomb:
+			if key[Key_List[skin_id][0]] and self.ok_bomb:
 				x = (self.rect.x - 264) // 48
 				y = (self.rect.y) // 48
 				if (self.rect.x - 264) % 48 != 0:
@@ -27,7 +27,7 @@ class Player() :
 				self.ok_bomb = False
 				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list)
 				bomb_list.append(self.bomb)
-			if key[pygame.K_LEFT]:
+			if key[Key_List[skin_id][1]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -37,7 +37,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[pygame.K_RIGHT]:
+			elif key[Key_List[skin_id][2]]:
 				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -47,7 +47,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			elif key[pygame.K_UP]:
+			elif key[Key_List[skin_id][3]]:
 				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -57,7 +57,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[pygame.K_DOWN]:
+			elif key[Key_List[skin_id][4]]:
 				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -67,7 +67,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			if key[pygame.K_LEFT] == False and key[pygame.K_RIGHT] == False and key[pygame.K_UP] == False and key[pygame.K_DOWN] == False:
+			if key[Key_List[skin_id][1]] == False and key[Key_List[skin_id][2]] == False and key[Key_List[skin_id][3]] == False and key[Key_List[skin_id][4]] == False:
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4
