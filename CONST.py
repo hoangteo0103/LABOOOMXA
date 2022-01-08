@@ -21,6 +21,10 @@ Instruction_Button_Image = pygame.image.load('Game_Data/Image/Instruction_Button
 Quit_Button_Image = pygame.image.load('Game_Data/Image/Quit_Button_Image.png')
 Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,8)]
 Item_Frame = [pygame.image.load(f'Game_Data/Image/Item/Item_{i}.png') for i in range(1, 4)]
+Number_Item_Frame = [4 , 8 , 6]
+Item_Frame_Size = [(1024 ,1024) , (16 ,16) , (250 ,250)]
+
+
 Num_Idle_Frames = [4 , 4 , 4 , 4 , 9 , 18 , 9 ]
 Num_Move_Frames = [10 , 10 , 10 , 10 , 22 , 42 , 17]
 

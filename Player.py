@@ -8,6 +8,7 @@ class Player() :
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[] , [])
 		self.speed = 12
 		self.player_lives = 3 
+		self.shield = 0 
 		self.power = 1
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , item_list , skin_id , player_lives ) :
 		dx = 0 
@@ -136,6 +137,7 @@ class Player() :
 								self.rect.x += self.speed
 
 			#handle colision 
+			is_collission  = 0 
 			x = (self.rect.x - 264) // 48
 			y = (self.rect.y) // 48
 			if len(bomb_list) > 0 :
@@ -143,17 +145,23 @@ class Player() :
 					bomb_x = (t.rect.x - 264) // 48
 					bomb_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) and t.is_denotated() == True  :
-						self.alived = 0
-						self.player_lives-=1 
-
+						is_collission = 1 
+						if (self.shield == 1) :
+							bomb_list.remove(t)
 			if len(explosion_list) > 0 :
 				for t in explosion_list :
 					ex_x = (t.rect.x - 264) // 48
 					ex_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False  :
-						if self.alived == 1 : 
-							self.alived = 0
-							self.player_lives-=1  
+						is_collission = 1 
+						if (self.shield == 1) :
+							explosion_list.remove(t)
+			if is_collission == 1 :
+				if(self.shield == 1) :
+					self.shield = 0
+				else :
+					self.shield = 0
+					self.alived = 0 					
 			if len(item_list) > 0 :
 				for t in item_list :
 					if t.rect.colliderect(self.rect) :
@@ -163,7 +171,12 @@ class Player() :
 						if(t.state == 1) :
 							self.power += 1
 							item_list.remove(t)
-			screen.blit(bubble_image, self.rect)
+						if(t.state == 2) :
+							self.shield = 1 
+							item_list.remove(t)
+			print(self.shield)
+			if(self.shield == 1) :
+				screen.blit(bubble_image, self.rect)
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3
