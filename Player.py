@@ -8,6 +8,7 @@ class Player() :
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[] , [])
 		self.speed = 12
 		self.player_lives = 3 
+		self.power = 1
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , item_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
@@ -26,7 +27,7 @@ class Player() :
 				if (self.rect.y) % 48 != 0:
 					y += 1
 				self.ok_bomb = False
-				self.bomb = Bomb((264 + 48 * x) , y * 48 , 3 , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
+				self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
 				bomb_list.append(self.bomb)
 			if key[Player_Key[skin_id][1]]:
 				dx -= self.speed
@@ -159,6 +160,10 @@ class Player() :
 						if(t.state == 0) :
 							self.player_lives+=1
 							item_list.remove(t)
+						if(t.state == 1) :
+							self.power += 1
+							item_list.remove(t)
+
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3
@@ -173,7 +178,8 @@ class Player() :
 		self.ok_bomb = True 
 		self.inMovement = 0 
 		self.counter_idle = 0
-		self.counter_move = 0  
+		self.counter_move = 0
+		self.power = 1  
 		width = Width_Frames[skin_id]
 		height = Heigh_Frames[skin_id]
 		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[skin_id])
