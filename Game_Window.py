@@ -25,6 +25,7 @@ def Run() :
 
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
+	player_lives  = [3,  3 , 3 , 3 ]
 	death_cooldown = 25
 	while running:
 		clock.tick(10)
@@ -46,15 +47,16 @@ def Run() :
 			for t in bomb_list :
 				if t.draw(Game_Screen,background_list , destrucable_list , undestrucalbe_list) == True :
 					bomb_list.remove(t)
+		print(player_lives[0])
 		for i in range(2):
-			if(Player_List[i].alived == 0) :
+			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
 				death_counter[0]+=1
 				if(death_counter[0] > death_cooldown) :
 					death_counter[0] = 0 
 					Player_List[i].alived = 1 
 					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
-			if(Player_List[i].alived == 1 ) :
-				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list , i)
+			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()

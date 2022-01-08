@@ -7,7 +7,8 @@ class Player() :
 		self.reset(x , y , skin_id ) 
 		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[])
 		self.speed = 12
-	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , skin_id) :
+		self.player_lives = 3 
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -142,13 +143,16 @@ class Player() :
 					bomb_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) and t.is_denotated() == True  :
 						self.alived = 0
+						self.player_lives-=1 
 
 			if len(explosion_list) > 0 :
 				for t in explosion_list :
 					ex_x = (t.rect.x - 264) // 48
 					ex_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False  :
-						self.alived = 0 
+						if self.alived == 1 : 
+							self.alived = 0
+							self.player_lives-=1  
 			screen.blit(self.image, self.rect)
 	def reset(self , x , y , skin_id) :
 		# idle frame from 0 to 3
