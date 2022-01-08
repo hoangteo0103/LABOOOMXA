@@ -4,7 +4,7 @@ import spritesheet
 # Screen Const
 Main_Menu_Window_Width = 800
 Main_Menu_Window_Height = 720
-Setting_Window_Width = 800
+Setting_Window_Width = 1080
 Setting_Window_Height = 720
 Game_Window_Width = 1080
 Game_Window_Height = 720
@@ -20,7 +20,6 @@ Setting_Button_Image = pygame.image.load('Game_Data/Image/Setting_Button_Image.p
 Instruction_Button_Image = pygame.image.load('Game_Data/Image/Instruction_Button_Image.png')
 Quit_Button_Image = pygame.image.load('Game_Data/Image/Quit_Button_Image.png')
 Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,8)]
-Item_Frame = [pygame.image.load(f'Game_Data/Image/Item/Item_{i}.png') for i in range(1,2)]
 Num_Idle_Frames = [4 , 4 , 4 , 4 , 9 , 18 , 9 ]
 Num_Move_Frames = [10 , 10 , 10 , 10 , 22 , 42 , 17]
 
@@ -42,6 +41,21 @@ Cell_Width = 48
 Cell_Height = 48
 
 # Key Const
+Player_Key = []
+Player_Key.append([pygame.K_SPACE , pygame.K_LEFT , pygame.K_RIGHT , pygame.K_UP , pygame.K_DOWN])
+Player_Key.append([pygame.K_g , pygame.K_a , pygame.K_d , pygame.K_w , pygame.K_s])
+
 Key_List = []
-Key_List.append([pygame.K_SPACE , pygame.K_LEFT , pygame.K_RIGHT , pygame.K_UP , pygame.K_DOWN])
-Key_List.append([pygame.K_g , pygame.K_a , pygame.K_d , pygame.K_w , pygame.K_s])
+Key_Image = []
+for i in range(10):
+	Key_List.append(pygame.key.key_code(str(i)))
+	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
+	Key_Image.append(Image)
+for i in range(97 , 123):
+	Key_List.append(pygame.key.key_code(chr(i)))
+	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{chr(i)}.png')
+	Key_Image.append(Image)
+for i in ('left alt' , 'right alt' , 'capslock' , 'left ctrl' , 'right ctrl' , 'left shift' , 'right shift' , 'space' , 'tab' , 'left' , 'right' , 'up' , 'down'):
+	Key_List.append(pygame.key.key_code(i))
+	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
+	Key_Image.append(Image)
