@@ -75,7 +75,7 @@ class Bomb():
 				self.index+=1
 				if(self.index >= len(self.frames)) :
 					print("gg")
-					for i in range(0  , self.id * 4) :
+					for i in range(0  , len(self.explosion)) :
 						self.explosion[i].draw(screen,background_list , destrucable_list , undestrucable_list , item_list)
 					return True
 
