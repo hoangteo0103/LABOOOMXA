@@ -10,7 +10,7 @@ def Run() :
 	bomb_list = []
 	explosion_list = []
 	destrucable_list = []
-	undestrucalbe_list = []
+	undestrucable_list = []
 	background_list = []
 	item_list = []
 	# Set the caption of the screen
@@ -23,7 +23,7 @@ def Run() :
 	running = True	
 	clock = pygame.time.Clock()
 
-	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucalbe_list )
+	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucable_list )
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
 	player_lives  = [3,  3 , 3 , 3 ]
@@ -40,14 +40,14 @@ def Run() :
 
 
 		Game_Screen.fill(Black)
-		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucalbe_list)
+		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
 						explosion_list.remove(t)
 		if len(bomb_list) > 0 :
 			for t in bomb_list :
-				if t.draw(Game_Screen,background_list , destrucable_list , undestrucalbe_list , item_list) == True :
+				if t.draw(Game_Screen,background_list , destrucable_list , undestrucable_list , item_list) == True :
 					bomb_list.remove(t)
 		if len(item_list) > 0 :
 			for t in item_list :
@@ -64,7 +64,7 @@ def Run() :
 					Player_List[i].alived = 1 
 					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
 			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
-				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucalbe_list ,storm_list ,  item_list , i ,Player_List[i].player_lives)
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list ,  item_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()

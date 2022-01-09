@@ -19,9 +19,9 @@ class Storm() :
  		elif self.dir == 1 :
  			self.rect.x+=48
  		elif self.dir == 2 :
- 			self.rect.y-=48
- 		else :
  			self.rect.y+=48
+ 		else :
+ 			self.rect.y-=48
  	def draw(self , screen , destrucable_list , undestrucable_list ) : 
  		if self.stop == True :
  			return True
@@ -43,9 +43,9 @@ class Storm() :
  			elif self.dir == 1 :
  				self.rect.x+=self.speed
  			elif self.dir == 2 :
- 				self.rect.y-=self.speed
- 			elif self.dir == -2:
  				self.rect.y+=self.speed
+ 			elif self.dir == -2:
+ 				self.rect.y-=self.speed
  			for tile in destrucable_list :
  				if(tile[1].colliderect(self.rect)) :
  					self.stop = True 

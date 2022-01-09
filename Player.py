@@ -2,6 +2,7 @@ import pygame
 from CONST import *
 import spritesheet
 from Bomb import * 
+from Storm import *
 class Player() : 
 	def __init__(self , x , y , skin_id) :
 		self.reset(x , y , skin_id ) 
@@ -21,16 +22,20 @@ class Player() :
 			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[Key_List[Player_Key[skin_id][0]]] and self.ok_bomb:
-				x = (self.rect.x - 264) // 48
-				y = (self.rect.y) // 48
-				if (self.rect.x - 264) % 48 != 0:
-					x += 1
-				if (self.rect.y) % 48 != 0:
-					y += 1
-				self.ok_bomb = False
-				self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
-				bomb_list.append(self.bomb)
+			if key[Key_List[Player_Key[skin_id][0]]] :
+				if self.storm == 1 :
+					storm_list.append(Storm(self.rect.x  , self.rect.y ,self.direction))
+					self.storm = 0
+				elif self.ok_bomb == 1 :
+					x = (self.rect.x - 264) // 48
+					y = (self.rect.y) // 48
+					if (self.rect.x - 264) % 48 != 0:
+						x += 1
+					if (self.rect.y) % 48 != 0:
+						y += 1
+					self.ok_bomb = False
+					self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
+					bomb_list.append(self.bomb)
 			if key[Key_List[Player_Key[skin_id][1]]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
