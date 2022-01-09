@@ -50,10 +50,10 @@ def Run():
 			else:
 				x += 12 * Key_Image_Scale + dis
 	
-	Player_Key_Button = [[] , []]
-	for i in range(2):
+	Player_Key_Button = [[] , [] , [] , []]
+	for i in range(4):
 		for j in range(5):
-			Player_Key_Button[i].append(Button(i * 150 + 50 , j * Key_Image_Scale * 14 + 50 , Key_Image[Player_Key[i][j]] , 1))
+			Player_Key_Button[i].append(Button(i * 200 + 200 , j * Key_Image_Scale * 14 + 150 , Key_Image[Player_Key[i][j]] , 1))
 
 	running = True
 	P1 = -1
@@ -67,11 +67,12 @@ def Run():
 				Main_Menu_Window.Run()
 				exit()
 		
-		for i in range(2):
+		for i in range(4):
 			for j in range(5):
 				if Player_Key_Button[i][j].isClicked(Setting_Screen):
 					P1 = i
 					P2 = j
+					Player_Key_Button[P1][P2] = Button(P1 * 200 + 200 , P2 * Key_Image_Scale * 14 + 150 , Empty_Key_Image , 1)
 
 		for i in range(49):
 			if Key_Button[i].isClicked(Setting_Screen):
@@ -80,14 +81,14 @@ def Run():
 						if Key_Pos[j] != i:
 							continue
 						Player_Key[P1][P2] = j
-						Player_Key_Button[P1][P2] = Button(P1 * 150 + 50 , P2 * Key_Image_Scale * 14 + 50 , Key_Image[j] , 1)
+						Player_Key_Button[P1][P2] = Button(P1 * 200 + 200 , P2 * Key_Image_Scale * 14 + 150 , Key_Image[j] , 1)
 					P1 = -1
 					P2 = -1
 
 		Setting_Screen.fill((120 , 120 , 120))
 		for i in Key_Button:
 			i.draw(Setting_Screen)
-		for i in range(2):
+		for i in range(4):
 			for j in Player_Key_Button[i]:
 				j.draw(Setting_Screen)
 

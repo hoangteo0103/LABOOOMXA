@@ -20,9 +20,9 @@ Setting_Button_Image = pygame.image.load('Game_Data/Image/Setting_Button_Image.p
 Instruction_Button_Image = pygame.image.load('Game_Data/Image/Instruction_Button_Image.png')
 Quit_Button_Image = pygame.image.load('Game_Data/Image/Quit_Button_Image.png')
 Skin_Image = [pygame.image.load(f'Game_Data/Image/Skin_{i}.png') for i in range(1,8)]
-Item_Frame = [pygame.image.load(f'Game_Data/Image/Item/Item_{i}.png') for i in range(1, 5)]
-Number_Item_Frame = [4 , 8 , 6 ,7]
-Item_Frame_Size = [(1024 ,1024) , (16 ,16) , (250 ,250) , (220 , 93) ]
+Item_Frame = [pygame.image.load(f'Game_Data/Image/Item/Item_{i}.png') for i in range(1, 4)]
+Number_Item_Frame = [4 , 8 , 6]
+Item_Frame_Size = [(1024 ,1024) , (16 ,16) , (250 ,250)]
 
 
 Num_Idle_Frames = [4 , 4 , 4 , 4 , 9 , 18 , 9 ]
@@ -42,8 +42,6 @@ explosion_frames = [left_explosion , right_explosion , up_explosion , down_explo
 bubble_image = pygame.transform.scale(pygame.image.load("Game_Data/Image/Item/bubble.png"), (48, 48))
 bubble_image.set_colorkey((100, 100,100))
 
-storm_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/storm/storm-{i}.png') , (48 ,48)) for i in range(0,30)]
-
 bomb_image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Bomb_Image.png') , (48 , 48)) 
 
 # Cell Const
@@ -52,10 +50,14 @@ Cell_Height = 48
 
 # Key Const
 Player_Key = []
-Player_Key.append([16 , 10 , 13 , 32 , 28])
-Player_Key.append([43 , 45 , 46 , 47 , 48])
+Player_Key.append([15 , 10 , 13 , 32 , 28])
+Player_Key.append([40 , 45 , 46 , 47 , 48])
+Player_Key.append([1 , 2 , 3 , 4 , 5])
+Player_Key.append([42 , 19 , 21 , 18 , 20])
 
 Key_Image_Scale = 4
+Empty_Key_Image = pygame.image.load('Game_Data/Image/Setting_Image/button.png')
+Empty_Key_Image = pygame.transform.scale(Empty_Key_Image , (int(Empty_Key_Image.get_width() * Key_Image_Scale) , int(Empty_Key_Image.get_height() * Key_Image_Scale)))
 Key_List = []
 Key_Image = []
 Key_Pos = [10 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 23 , 41 , 38 , 25 , 14 , 26 , 27 , 28 , 19 , 29 , 30 , 31 , 43 , 42 , 20 , 21 , 12 , 15 , 24 , 16 , 18 , 40 , 13 , 37 , 17 , 36 , 35 , 44 , 11 , 34 , 45 , 22 , 32 , 39 , 0 , 46 , 48 , 33 , 47]
