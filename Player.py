@@ -22,6 +22,7 @@ class Player() :
 			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
+<<<<<<< HEAD
 			if key[Player_Key[skin_id][0]] :
 				if self.storm == 1 : 
 					self.storm = 0 
@@ -37,6 +38,19 @@ class Player() :
 					self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
 					bomb_list.append(self.bomb)
 			if key[Player_Key[skin_id][1]]:
+=======
+			if key[Key_List[Player_Key[skin_id][0]]] and self.ok_bomb:
+				x = (self.rect.x - 264) // 48
+				y = (self.rect.y) // 48
+				if (self.rect.x - 264) % 48 != 0:
+					x += 1
+				if (self.rect.y) % 48 != 0:
+					y += 1
+				self.ok_bomb = False
+				self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
+				bomb_list.append(self.bomb)
+			if key[Key_List[Player_Key[skin_id][1]]]:
+>>>>>>> 88a63b81748fc438196442e26ea23714e6413498
 				dx -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -46,7 +60,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[Player_Key[skin_id][2]]:
+			elif key[Key_List[Player_Key[skin_id][2]]]:
 				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -56,7 +70,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			elif key[Player_Key[skin_id][3]]:
+			elif key[Key_List[Player_Key[skin_id][3]]]:
 				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -65,8 +79,13 @@ class Player() :
 				self.index_idle = -1
 				self.counter_idle = -1 
 				self.inMovement = 1 
+<<<<<<< HEAD
 				self.direction = -2
 			elif key[Player_Key[skin_id][4]]:
+=======
+				self.direction = -1
+			elif key[Key_List[Player_Key[skin_id][4]]]:
+>>>>>>> 88a63b81748fc438196442e26ea23714e6413498
 				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -75,8 +94,13 @@ class Player() :
 				self.index_idle = -1
 				self.counter_idle = -1
 				self.inMovement = 1
+<<<<<<< HEAD
 				self.direction = 2
 			if key[Player_Key[skin_id][1]] == False and key[Player_Key[skin_id][2]] == False and key[Player_Key[skin_id][3]] == False and key[Player_Key[skin_id][4]] == False:
+=======
+				self.direction = 1
+			if key[Key_List[Player_Key[skin_id][1]]] == False and key[Key_List[Player_Key[skin_id][2]]] == False and key[Key_List[Player_Key[skin_id][3]]] == False and key[Key_List[Player_Key[skin_id][4]]] == False:
+>>>>>>> 88a63b81748fc438196442e26ea23714e6413498
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4

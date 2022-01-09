@@ -3,8 +3,8 @@ import Main_Menu_Window
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player_List = [Player(984 , 48 , 0) , Player(312 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
-	Player_Coord = [(984 , 48) , (312 , 48) , (312 , 624) , (984 , 624)]
+	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
+	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
 
 	storm_list = []
 	bomb_list = []
