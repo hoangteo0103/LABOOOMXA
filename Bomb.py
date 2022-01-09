@@ -75,7 +75,10 @@ class Bomb():
 				self.index+=1
 				if(self.index >= len(self.frames)) :
 					print("gg")
+					for i in range(0  , self.id * 4) :
+						self.explosion[i].draw(screen,background_list , destrucable_list , undestrucable_list , item_list)
 					return True
+
 				self.image = self.frames[self.index]
 			screen.blit(self.image , self.rect)
 			
