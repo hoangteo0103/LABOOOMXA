@@ -39,6 +39,8 @@ up_explosion = [pygame.transform.rotate(left_explosion[i] , 270) for i in range(
 down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range(0 , num_explosions_frames)]
 explosion_frames = [left_explosion , right_explosion , up_explosion , down_explosion ]
 storm_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/storm/storm-{i}.png") , (48 ,48)) for i in range(0,30)]
+portal_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/portal/portal-{i}.png") , (48 ,48)) for i in range(0,9)]
+
 
 bubble_image = pygame.transform.scale(pygame.image.load("Game_Data/Image/Item/bubble.png"), (48, 48))
 bubble_image.set_colorkey((100, 100,100))

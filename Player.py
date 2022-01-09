@@ -12,7 +12,10 @@ class Player() :
 		self.shield = 0 
 		self.power = 1
 		self.storm = 0
-	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , storm_list , item_list , skin_id , player_lives ) :
+		self.portal_cooldown = 20 
+		self.portal_counter  = 0 
+		self.is_through_portal = False 
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , storm_list ,portal_list , item_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -108,7 +111,12 @@ class Player() :
 						self.image = self.images_idle_right[self.index_idle]
 					if self.direction == -1 or self.direction == -2 :
 						self.image = self.images_idle_left[self.index_idle]
-			
+		#update portal counter 
+			if self.is_through_portal == True :
+				self.portal_counter+=1
+				if(self.portal_counter > self.portal_cooldown ) :
+					self.portal_counter = 0
+					self.is_through_portal = False 
 			 
 
 
@@ -192,6 +200,14 @@ class Player() :
 						if(t.state == 3) :
 							self.storm = 1 
 							item_list.remove(t)
+			if(len(portal_list) > 0) and self.is_through_portal == False :
+				for i in range(2) :
+					if(self.rect.colliderect(portal_list[i].rect)) :
+						self.rect.x = portal_list[i ^ 1 ].rect.x
+						self.rect.y = portal_list[i ^ 1 ].rect.y
+						self.is_through_portal = True 
+						break 
+
 			if(self.shield == 1) :
 				screen.blit(bubble_image, self.rect)
 			screen.blit(self.image, self.rect)
@@ -210,6 +226,9 @@ class Player() :
 		self.counter_idle = 0
 		self.counter_move = 0
 		self.power = 1  
+		self.portal_cooldown = 20 
+		self.portal_counter  = 0 
+		self.is_through_portal = False 
 		self.storm = 0 
 		width = Width_Frames[skin_id]
 		height = Heigh_Frames[skin_id]

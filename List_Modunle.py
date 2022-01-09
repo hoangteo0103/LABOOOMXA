@@ -5,6 +5,7 @@ from Player import *
 from Item import *
 from Bomb import *
 from Storm import *
+from Portal import *
 from Play_Board import *
 import os
 x = 10

@@ -6,6 +6,8 @@ def Run() :
 	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
 	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
 
+	
+	portal_list = []
 	storm_list = []
 	bomb_list = []
 	explosion_list = []
@@ -40,7 +42,7 @@ def Run() :
 
 
 		Game_Screen.fill(Black)
-		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list)
+		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
@@ -64,7 +66,7 @@ def Run() :
 					Player_List[i].alived = 1 
 					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
 			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
-				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list ,  item_list , i ,Player_List[i].player_lives)
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list , portal_list , item_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()
