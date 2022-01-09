@@ -10,7 +10,7 @@ class Bomb():
 		self.rect.x = x 
 		self.rect.y = y 
 		self.denotated = False 
-		self.delay_start = 20 
+		self.delay_start = 18
 		self.counter_start = 0 
 		self.counter = 0 
 		self.index = 0

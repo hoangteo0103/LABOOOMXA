@@ -30,9 +30,9 @@ class Explosion():
 			if(tile[1].colliderect(self.rect)) :
 				destrucable_list.remove(tile)
 				background_list.append((background_list[0][0] ,tile[1]))
-				is_item = random.randint(0,1)
+				is_item = random.randint(1,1)
 				if is_item == 1 :
-					type_item = random.randint(0 , 2)
+					type_item = random.randint(3,3)
 					item = Item(tile[1].x , tile[1].y , type_item)
 					item_list.append(item)
 				self.stop = True 

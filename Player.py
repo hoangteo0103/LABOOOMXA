@@ -2,6 +2,7 @@ import pygame
 from CONST import *
 import spritesheet
 from Bomb import * 
+from Storm import *
 class Player() : 
 	def __init__(self , x , y , skin_id) :
 		self.reset(x , y , skin_id ) 
@@ -10,7 +11,8 @@ class Player() :
 		self.player_lives = 3 
 		self.shield = 0 
 		self.power = 1
-	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , item_list , skin_id , player_lives ) :
+		self.storm = 1 
+	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , storm_list ,  item_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
 		idle_cooldown = 60
@@ -20,16 +22,20 @@ class Player() :
 			self.ok_bomb = True
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[Player_Key[skin_id][0]] and self.ok_bomb:
-				x = (self.rect.x - 264) // 48
-				y = (self.rect.y) // 48
-				if (self.rect.x - 264) % 48 != 0:
-					x += 1
-				if (self.rect.y) % 48 != 0:
-					y += 1
-				self.ok_bomb = False
-				self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
-				bomb_list.append(self.bomb)
+			if key[Player_Key[skin_id][0]] :
+				if self.storm == 1 : 
+					self.storm = 0 
+					storm_list.append(Storm(self.rect.x , self.rect.y ,self.direction ))
+				elif self.ok_bomb == 1 :
+					x = (self.rect.x - 264) // 48
+					y = (self.rect.y) // 48
+					if (self.rect.x - 264) % 48 != 0:
+						x += 1
+					if (self.rect.y) % 48 != 0:
+						y += 1
+					self.ok_bomb = False
+					self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
+					bomb_list.append(self.bomb)
 			if key[Player_Key[skin_id][1]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
@@ -59,7 +65,7 @@ class Player() :
 				self.index_idle = -1
 				self.counter_idle = -1 
 				self.inMovement = 1 
-				self.direction = -1
+				self.direction = -2
 			elif key[Player_Key[skin_id][4]]:
 				dy += self.speed
 				if self.inMovement == 1 :
@@ -69,15 +75,15 @@ class Player() :
 				self.index_idle = -1
 				self.counter_idle = -1
 				self.inMovement = 1
-				self.direction = 1
+				self.direction = 2
 			if key[Player_Key[skin_id][1]] == False and key[Player_Key[skin_id][2]] == False and key[Player_Key[skin_id][3]] == False and key[Player_Key[skin_id][4]] == False:
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4
 				self.counter_idle+=1
-				if self.direction == 1:
+				if self.direction == 1 or self.direction == 2 :
 					self.image = self.images_idle_right[self.index_idle]
-				if self.direction == -1:
+				if self.direction == -1 or self.direction == -2 :
 					self.image = self.images_idle_left[self.index_idle]
 
 
@@ -88,9 +94,9 @@ class Player() :
 					self.index_move += 1
 					if self.index_move >= len(self.images_move_right):
 						self.index_move= 0
-					if self.direction == 1:
+					if self.direction == 1 or self.direction == 2:
 						self.image = self.images_move_right[self.index_move]
-					if self.direction == -1:
+					if self.direction == -1 or self.direction == -2 :
 						self.image = self.images_move_left[self.index_move]
 			else :
 				if self.counter_idle > idle_cooldown:
@@ -98,9 +104,9 @@ class Player() :
 					self.index_idle += 1
 					if self.index_idle >= len(self.images_idle_right):
 						self.index_idle = 0
-					if self.direction == 1:
+					if self.direction == 1 or self.direction == 2 :
 						self.image = self.images_idle_right[self.index_idle]
-					if self.direction == -1:
+					if self.direction == -1 or self.direction == -2 :
 						self.image = self.images_idle_left[self.index_idle]
 			
 			 
@@ -156,6 +162,14 @@ class Player() :
 						is_collission = 1 
 						if (self.shield == 1) :
 							explosion_list.remove(t)
+			if len(storm_list) > 0 :
+				for t in storm_list :
+					st_x = (t.rect.x - 264) // 48
+					st_y = (t.rect.y) // 48
+					if t.rect.colliderect(self.rect) :
+						is_collission = 1 
+						if (self.shield == 1) :
+							storm_list.remove(t)
 			if is_collission == 1 :
 				if(self.shield == 1) :
 					self.shield = 0
@@ -175,6 +189,9 @@ class Player() :
 						if(t.state == 2) :
 							self.shield = 1 
 							item_list.remove(t)
+						if(t.state == 3) :
+							self.storm = 1 
+							item_list.remove(t)
 			if(self.shield == 1) :
 				screen.blit(bubble_image, self.rect)
 			screen.blit(self.image, self.rect)
@@ -193,6 +210,7 @@ class Player() :
 		self.counter_idle = 0
 		self.counter_move = 0
 		self.power = 1  
+		self.storm = 1
 		width = Width_Frames[skin_id]
 		height = Heigh_Frames[skin_id]
 		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[skin_id])
