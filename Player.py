@@ -200,6 +200,9 @@ class Player() :
 						if(t.state == 3) :
 							self.storm = 1 
 							item_list.remove(t)
+						if t.state == 4 :
+							# self.speed += 2
+							item_list.remove(t)
 			if(len(portal_list) > 0) and self.is_through_portal == False :
 				for i in range(2) :
 					if(self.rect.colliderect(portal_list[i].rect)) :
