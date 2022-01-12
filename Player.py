@@ -25,7 +25,8 @@ class Player() :
 		for t in self.player_bomb_list :
 			if t.is_denotated() == True : 
 				self.player_bomb_list.remove(t)
-		print(len(self.player_bomb_list)) 
+
+		print(self.number_bombs)
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
 			if key[Key_List[Player_Key[skin_id][0]]] :
@@ -33,7 +34,7 @@ class Player() :
 					storm_list.append(Storm(self.rect.x  , self.rect.y ,self.direction))
 					self.storm = 0
 				elif len(self.player_bomb_list) < self.number_bombs:
-					print(1)
+					print(len(self.player_bomb_list), self.number_bombs)
 					x = (self.rect.x - 264) // 48
 					y = (self.rect.y) // 48
 					if (self.rect.x - 264) % 48 != 0:
@@ -41,8 +42,16 @@ class Player() :
 					if (self.rect.y) % 48 != 0:
 						y += 1
 					bomb_now = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
-					bomb_list.append(bomb_now)
-					self.player_bomb_list.append(bomb_now)
+						
+					kq = True
+					for i in self.player_bomb_list:
+						X = (i.rect.x - 264) // 48
+						Y = (i.rect.y) // 48
+						if(x == X and y == Y): kq = False
+
+					if kq == True:
+						bomb_list.append(bomb_now)
+						self.player_bomb_list.append(bomb_now)
 			if key[Key_List[Player_Key[skin_id][1]]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
