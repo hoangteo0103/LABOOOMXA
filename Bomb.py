@@ -74,9 +74,8 @@ class Bomb():
 				self.counter = 0 
 				self.index+=1
 				if(self.index >= len(self.frames)) :
-					print("gg")
 					for i in range(0  , len(self.explosion)) :
-						self.explosion[i].draw(screen,background_list , destrucable_list , undestrucable_list , item_list)
+						self.explosion[i].denotated = True
 					return True
 
 				self.image = self.frames[self.index]

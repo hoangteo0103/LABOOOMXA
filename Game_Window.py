@@ -61,7 +61,7 @@ def Run() :
 			for t in storm_list :
 				if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :
 					storm_list.remove(t)
-		for i in range(1):
+		for i in range(2):
 			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
 				death_counter[0]+=1
 				if(death_counter[0] > death_cooldown) :
