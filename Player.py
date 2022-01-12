@@ -141,14 +141,30 @@ class Player() :
 					if Num_Collide == 1:
 						if abs(Pos_Collide.x - self.rect.x) == Cell_Width:
 							if self.rect.y < Pos_Collide.y:
-								self.rect.y -= self.speed
+								if self.rect.y % 12 == 0:
+									self.rect.y -= 12
+								else:
+									self.rect.y -= self.rect.y % 12
 							elif self.rect.y > Pos_Collide.y:
-								self.rect.y += self.speed
-						else:
+								self.rect.y += 12
+								if self.rect.y % 12 != 0:
+									self.rect.y -= self.rect.y % 12
+						elif abs(Pos_Collide.y - self.rect.y) == Cell_Height:
 							if self.rect.x < Pos_Collide.x:
-								self.rect.x -= self.speed
+								if self.rect.x % 12 == 0:
+									self.rect.x -= 12
+								else:
+									self.rect.x -= self.rect.x % 12
 							elif self.rect.x > Pos_Collide.x:
-								self.rect.x += self.speed
+								self.rect.x += 12
+								if self.rect.x % 12 != 0:
+									self.rect.x -= self.rect.x % 12
+						else:
+							while Pos_Collide.colliderect(self.rect) == False:
+								self.rect.x += (dx // self.speed)
+								self.rect.y += (dy // self.speed)
+							self.rect.x -= (dx // self.speed)
+							self.rect.y -= (dy // self.speed)
 
 			#handle colision 
 			is_collission  = 0 
@@ -201,7 +217,8 @@ class Player() :
 							self.storm = 1 
 							item_list.remove(t)
 						if t.state == 4 :
-							self.speed+=2
+							self.speed += 2
+							self.speed = min(self.speed , 24)
 							item_list.remove(t)
 			if(len(portal_list) > 0) and self.is_through_portal == False :
 				for i in range(2) :

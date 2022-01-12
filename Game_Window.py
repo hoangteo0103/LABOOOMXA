@@ -44,32 +44,32 @@ def Run() :
 				exit()
 
 		Game_Screen.blit(text , textRect)
-		# Game_Screen.fill(Black)
-		# Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
-		# if len(explosion_list) > 0 :
-		# 		for t in explosion_list :
-		# 			if t.is_denotated() == True :
-		# 				explosion_list.remove(t)
-		# if len(bomb_list) > 0 :
-		# 	for t in bomb_list :
-		# 		if t.draw(Game_Screen,background_list , destrucable_list , undestrucable_list , item_list) == True :
-		# 			bomb_list.remove(t)
-		# if len(item_list) > 0 :
-		# 	for t in item_list :
-		# 		t.draw(Game_Screen)
-		# if len(storm_list) > 0 :
-		# 	for t in storm_list :
-		# 		if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :
-		# 			storm_list.remove(t)
-		# for i in range(2):
-		# 	if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
-		# 		death_counter[0]+=1
-		# 		if(death_counter[0] > death_cooldown) :
-		# 			death_counter[0] = 0 
-		# 			Player_List[i].alived = 1 
-		# 			Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
-		# 	if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
-		# 		Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list , portal_list , item_list , i ,Player_List[i].player_lives)
+		Game_Screen.fill(Black)
+		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
+		if len(explosion_list) > 0 :
+				for t in explosion_list :
+					if t.is_denotated() == True :
+						explosion_list.remove(t)
+		if len(bomb_list) > 0 :
+			for t in bomb_list :
+				if t.draw(Game_Screen,background_list , destrucable_list , undestrucable_list , item_list) == True :
+					bomb_list.remove(t)
+		if len(item_list) > 0 :
+			for t in item_list :
+				t.draw(Game_Screen)
+		if len(storm_list) > 0 :
+			for t in storm_list :
+				if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :
+					storm_list.remove(t)
+		for i in range(2):
+			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
+				death_counter[0]+=1
+				if(death_counter[0] > death_cooldown) :
+					death_counter[0] = 0 
+					Player_List[i].alived = 1 
+					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
+			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
+				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list , portal_list , item_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()
