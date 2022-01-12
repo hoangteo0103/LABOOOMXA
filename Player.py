@@ -11,6 +11,7 @@ class Player() :
 		self.player_lives = 3 
 		self.shield = 0 
 		self.power = 1
+		self.number_bombs = 1 
 		self.storm = 0
 		self.portal_cooldown = 20 
 		self.portal_counter  = 0 
@@ -242,6 +243,7 @@ class Player() :
 		self.index_idle = 0  
 		self.alived = 1 
 		self.ok_bomb = True 
+		self.number_bombs = 1 
 		self.inMovement = 0 
 		self.counter_idle = 0
 		self.counter_move = 0
@@ -250,6 +252,8 @@ class Player() :
 		self.portal_counter  = 0 
 		self.is_through_portal = False 
 		self.storm = 0 
+		self.speed = 12
+		self.skin_id = skin_id 
 		width = Width_Frames[skin_id]
 		height = Heigh_Frames[skin_id]
 		sprite_sheet = spritesheet.SpriteSheet(Skin_Image[skin_id])

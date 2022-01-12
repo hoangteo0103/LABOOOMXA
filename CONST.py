@@ -10,12 +10,15 @@ Setting_Window_Height = 720
 Game_Window_Width = 1080
 Game_Window_Height = 720
 #Const Font 
-font = pygame.font.Font('Game_Data/Font/font1.ttf', 32)
-text = font.render('GeeksForGeeks', True, (100,100,100), (0,0,0))
+font_player = pygame.font.Font('Game_Data/Font/font2.ttf', 25)
+font_item = pygame.font.Font('Game_Data/Font/font5.ttf', 25)
 
 
 # Color Const 
 Black = (0,0,0) 
+White = (255,255,255)
+Green = (124 , 252 , 0 )
+
 
 # Image
 Main_Menu_Image = pygame.image.load('Game_Data/Image/Main_Menu_Background.jpg')
@@ -35,6 +38,20 @@ Num_Move_Frames = [10 , 10 , 10 , 10 , 22 , 42 , 17]
 
 Heigh_Frames = [24 , 24 , 24 , 24 , 80 ,  80 , 64]
 Width_Frames = [24 , 24 , 24 , 24 , 120 , 80 , 64 ]
+
+#Profile 
+Skin_SpriteSheet = [spritesheet.SpriteSheet(Skin_Image[i]) for i in range(7)]
+Skin_Profile_Image = [pygame.transform.scale(Skin_SpriteSheet[i].get_image(0 , Width_Frames[i] , Heigh_Frames[i] , 1 , Black) , (150 ,140) ) for i in range(7)]
+
+
+Profile_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Player_Profile/Profile.png') , (264 , 180) )
+Size_Item_Profile = 25
+Heart_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Item/heart.png') , (40 , 40) )  
+Potion_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Item/potion.png') , (Size_Item_Profile , Size_Item_Profile) )
+Speed_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Item/speed.png') , (Size_Item_Profile , Size_Item_Profile) )
+Bomb_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Item/bomb.png') , (Size_Item_Profile , Size_Item_Profile) )
+
+
 
 bomb_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/bombs/tile0{i}.png') , (48 , 48 ) ) for i in range(0,12)]
 num_explosions_frames = 12

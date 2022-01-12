@@ -1,14 +1,13 @@
 from List_Modunle import *
 import Main_Menu_Window
+from Profile import * 
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
 	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
 	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
 	
-	textRect = text.get_rect()
-	textRect.x = 0 
-	textRect.y = 0 
+	
 	
 	portal_list = []
 	storm_list = []
@@ -20,7 +19,7 @@ def Run() :
 	item_list = []
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
-	  
+	Profile_Now = Profile(Player_List)
 	# Update the display using flip
 	pygame.display.flip()
 	  
@@ -43,9 +42,10 @@ def Run() :
 				Main_Menu_Window.Run()
 				exit()
 
-		Game_Screen.blit(text , textRect)
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
+		Profile_Now.draw(Game_Screen)
+
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
