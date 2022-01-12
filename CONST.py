@@ -1,6 +1,7 @@
 import pygame
 import spritesheet
 
+pygame.init()
 # Screen Const
 Main_Menu_Window_Width = 800
 Main_Menu_Window_Height = 720
@@ -8,6 +9,10 @@ Setting_Window_Width = 1080
 Setting_Window_Height = 720
 Game_Window_Width = 1080
 Game_Window_Height = 720
+#Const Font 
+font = pygame.font.Font('Game_Data/Font/font1.ttf', 32)
+text = font.render('GeeksForGeeks', True, (100,100,100), (0,0,0))
+
 
 # Color Const 
 Black = (0,0,0) 
