@@ -25,16 +25,25 @@ class Player() :
 		for t in self.player_bomb_list :
 			if t.is_denotated() == True : 
 				self.player_bomb_list.remove(t)
-
-		print(self.number_bombs)
+		storm = False
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
 			if key[Key_List[Player_Key[skin_id][0]]] :
 				if self.storm == 1 :
-					storm_list.append(Storm(self.rect.x  , self.rect.y ,self.direction))
-					self.storm = 0
+					dire = 3 
+					if key[Key_List[Player_Key[skin_id][1]]]:
+						dire = -1 
+					if key[Key_List[Player_Key[skin_id][2]]]:
+						dire = 1 
+					if key[Key_List[Player_Key[skin_id][3]]]:
+						dire = -2 
+					if key[Key_List[Player_Key[skin_id][4]]]:
+						dire = 2 
+					if dire!=3  :
+						storm = True
+						storm_list.append(Storm(self.rect.x  , self.rect.y ,dire))
+						self.storm = 0
 				elif len(self.player_bomb_list) < self.number_bombs:
-					print(len(self.player_bomb_list), self.number_bombs)
 					x = (self.rect.x - 264) // 48
 					y = (self.rect.y) // 48
 					if (self.rect.x - 264) % 48 != 0:
@@ -52,7 +61,7 @@ class Player() :
 					if kq == True:
 						bomb_list.append(bomb_now)
 						self.player_bomb_list.append(bomb_now)
-			if key[Key_List[Player_Key[skin_id][1]]]:
+			if key[Key_List[Player_Key[skin_id][1]]] and not storm:
 				dx -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -62,7 +71,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[Key_List[Player_Key[skin_id][2]]]:
+			elif key[Key_List[Player_Key[skin_id][2]]] and not storm:
 				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -72,7 +81,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			elif key[Key_List[Player_Key[skin_id][3]]]:
+			elif key[Key_List[Player_Key[skin_id][3]]] and not storm:
 				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -82,7 +91,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -2
-			elif key[Key_List[Player_Key[skin_id][4]]]:
+			elif key[Key_List[Player_Key[skin_id][4]]]and not storm:
 				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
