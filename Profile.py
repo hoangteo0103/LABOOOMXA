@@ -8,7 +8,6 @@ class Profile() :
 		pos = 0
 		for i in range(0 , self.number_of_player) : 
 			screen.blit(Profile_Image ,(0,pos))
-			print(str(i))
 			text = font_player.render("Player " + str(i + 1 ) , True, White)
 			screen.blit(text , (30, pos + 15) )
 			screen.blit(Heart_Image , (167 , 15 + pos))

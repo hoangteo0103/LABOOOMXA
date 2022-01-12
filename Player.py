@@ -6,7 +6,7 @@ from Storm import *
 class Player() : 
 	def __init__(self , x , y , skin_id) :
 		self.reset(x , y , skin_id ) 
-		self.bomb = Bomb(-5,-5,0 ,[] ,[] ,[] ,[] , [])
+		self.player_bomb_list = [] 
 		self.speed = 12
 		self.player_lives = 3 
 		self.shield = 0 
@@ -22,24 +22,27 @@ class Player() :
 		idle_cooldown = 60
 		walk_cooldown = 0.60
 		death_cooldown = 5
-		if self.bomb.is_denotated() == True :
-			self.ok_bomb = True
+		for t in self.player_bomb_list :
+			if t.is_denotated() == True : 
+				self.player_bomb_list.remove(t)
+		print(len(self.player_bomb_list)) 
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
 			if key[Key_List[Player_Key[skin_id][0]]] :
 				if self.storm == 1 :
 					storm_list.append(Storm(self.rect.x  , self.rect.y ,self.direction))
 					self.storm = 0
-				elif self.ok_bomb == 1 :
+				elif len(self.player_bomb_list) < self.number_bombs:
+					print(1)
 					x = (self.rect.x - 264) // 48
 					y = (self.rect.y) // 48
 					if (self.rect.x - 264) % 48 != 0:
 						x += 1
 					if (self.rect.y) % 48 != 0:
 						y += 1
-					self.ok_bomb = False
-					self.bomb = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
-					bomb_list.append(self.bomb)
+					bomb_now = Bomb((264 + 48 * x) , y * 48 , self.power , explosion_list, background_list , destrucable_list , undestrucable_list , item_list )
+					bomb_list.append(bomb_now)
+					self.player_bomb_list.append(bomb_now)
 			if key[Key_List[Player_Key[skin_id][1]]]:
 				dx -= self.speed
 				if self.inMovement == 1 :
@@ -221,6 +224,9 @@ class Player() :
 							self.speed += 2
 							self.speed = min(self.speed , 24)
 							item_list.remove(t)
+						if t.state == 5 :
+							self.number_bombs += 1
+							item_list.remove(t)
 			if(len(portal_list) > 0) and self.is_through_portal == False :
 				for i in range(2) :
 					if(self.rect.colliderect(portal_list[i].rect)) :
@@ -239,6 +245,7 @@ class Player() :
 		self.images_idle_left  = []
 		self.images_move_right = []
 		self.images_move_left =  []
+		self.bomb_list = [] 
 		self.index_move = 0
 		self.index_idle = 0  
 		self.alived = 1 
