@@ -3,6 +3,15 @@ import Main_Menu_Window
 import Game_Window
 
 def Run() :
+	Background = pygame.transform.scale(pygame.image.load('Game_Data/Image/Map_Image/Background.jpg'), (1080, 720))
+	text = font_map.render('select your map', True, White)
+
+	Left_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Map_Image/Left.png'), (50, 50))
+	Right_Image = pygame.transform.scale(pygame.image.load('Game_Data/Image/Map_Image/Right.png'), (50, 50))
+
+	Left_Button = Button(100, 335, Left_Image, 1)
+	Right_Button = Button(935, 335, Right_Image, 1)
+
 	pygame.time.delay(300)
 	Map_Window_Width = 1080
 	Map_Window_Height = 720
@@ -24,6 +33,12 @@ def Run() :
 				running = False	
 				Main_Menu_Window.Run()
 				exit()
+
+		Map_Screen.blit(Background, (0, 0))
+		Map_Screen.blit(text, (325, 20))
+
+		Left_Button.draw(Map_Screen)
+		Right_Button.draw(Map_Screen)
 
 		for i in Map_Button_List:
 			i.draw(Map_Screen)

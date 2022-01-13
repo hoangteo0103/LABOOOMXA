@@ -44,6 +44,7 @@ class Explosion():
 				is_item = random.randint(0,1)
 				if is_item == 1 :
 					type_item = List[random.randint(0, 100)]
+					print(type_item)
 					item = Item(tile[1].x , tile[1].y , type_item)
 					item_list.append(item)
 				self.stop = True 
