@@ -17,6 +17,7 @@ class Player() :
 		self.portal_counter  = 0 
 		self.is_through_portal = False 
 		self.storm_cooldown = 0
+		self.shield_cooldown = 0
 	def update(self , alived , screen , bomb_list, explosion_list , background_list , destrucable_list , undestrucable_list , storm_list ,portal_list , item_list , skin_id , player_lives ) :
 		dx = 0 
 		dy = 0 
@@ -29,6 +30,9 @@ class Player() :
 		storm = False
 
 		if(self.storm_cooldown > 0): self.storm_cooldown -= 1
+		if(self.shield_cooldown > 0): self.shield_cooldown -= 1
+
+		if(self.shield_cooldown == 0): self.shield = 0
 
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
@@ -236,6 +240,7 @@ class Player() :
 							item_list.remove(t)
 						if(t.state == 2) :
 							self.shield = 1 
+							self.shield_cooldown = 300
 							item_list.remove(t)
 						if(t.state == 3) :
 							self.storm = 1 
