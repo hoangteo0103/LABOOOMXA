@@ -1,6 +1,7 @@
 from List_Modunle import *
 import Setting_Window
 import Game_Window
+import Map_Window
 import Quit_Window
 Play_Game_Button = Button(280 , 200 , Play_Button_Image , 1)
 Setting_Game_Button = Button(280 , 320 , Setting_Button_Image , 1)
@@ -17,7 +18,7 @@ def Run():
     pygame.display.flip()
       
     # Variable to keep our game loop running
-    running = True	
+    running = True  
       
     # game loop
     while running:
@@ -33,7 +34,7 @@ def Run():
         Quit_Game_Button.draw(Main_Menu_Screen)
 
         if(Play_Game_Button.isClicked(Main_Menu_Screen) == True):
-        	Game_Window.Run() 
+            Map_Window.Run()
         if(Setting_Game_Button.isClicked(Main_Menu_Screen) == True):
             Setting_Window.Run()
         if(Quit_Game_Button.isClicked(Main_Menu_Screen) == True):

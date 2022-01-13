@@ -3,7 +3,7 @@ import Main_Menu_Window
 from Profile import * 
 from Boss import * 
 
-def Run() :
+def Run(Map_State) :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
 	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
 	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
@@ -28,7 +28,7 @@ def Run() :
 	running = True	
 	clock = pygame.time.Clock()
 	hentai = Boss(595 , 288)
-	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucable_list )
+	Board  = Play_Board(Map_State ,background_list , destrucable_list , undestrucable_list )
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
 	player_lives  = [3,  3 , 3 , 3 ]
