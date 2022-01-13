@@ -25,6 +25,17 @@ class Explosion():
 		for tile in undestrucable_list :
 			if(tile[1].colliderect(self.rect)) : 
 				return 
+
+		# Random Item
+		List = []
+		for i in range(10):
+			List.append(0)
+			List.append(2)
+		for i in range(20):
+			List.append(1)
+			List.append(3)
+			List.append(4)
+			List.append(5)
 		
 		for tile in destrucable_list :
 			if(tile[1].colliderect(self.rect)) :
@@ -32,7 +43,7 @@ class Explosion():
 				background_list.append((background_list[0][0] ,tile[1]))
 				is_item = random.randint(0,1)
 				if is_item == 1 :
-					type_item = random.randint(2, 2)
+					type_item = List[random.randint(0, 100)]
 					item = Item(tile[1].x , tile[1].y , type_item)
 					item_list.append(item)
 				self.stop = True 
