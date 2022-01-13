@@ -5,7 +5,7 @@ Image = []
 Board = [[0 for i in range(17)] for j in range(15)]
 clicked = [[False for i in range(17)] for j in range(15)]
 screen = pygame.display.set_mode((20 * 48 , 20 * 48))
-for i in range(6):
+for i in range(8):
 	Image_tmp = pygame.image.load(f'Game_Data/Image/Map_1/tile_{i}.png')
 	Image_tmp = pygame.transform.scale(Image_tmp, (Cell_Width, Cell_Height))
 	Image.append(Image_tmp)
