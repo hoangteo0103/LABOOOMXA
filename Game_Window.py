@@ -18,6 +18,7 @@ def Run(Map_State) :
 	undestrucable_list = []
 	background_list = []
 	item_list = []
+	spawn_list = []
 	# Set the caption of the screen
 	pygame.display.set_caption('LABOOMXA')
 	Profile_Now = Profile(Player_List)
@@ -48,7 +49,17 @@ def Run(Map_State) :
 		Profile_Now.draw(Game_Screen)
 		ok = hentai.draw(Game_Screen)
 		if ok :
-			Board.GenerateItem(Game_Screen , background_list , item_list)
+			Board.GenerateSpawn(Game_Screen , background_list , item_list , spawn_list)
+		
+		render_item = False 
+		for tile in spawn_list :
+			if tile.is_render == True :
+				render_item = True
+		if render_item :
+			Board.GenerateItem(Game_Screen , spawn_list , item_list)
+			spawn_list.clear()
+		for tile in spawn_list :
+			tile.draw(Game_Screen)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
