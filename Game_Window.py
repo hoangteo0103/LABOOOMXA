@@ -44,9 +44,11 @@ def Run(Map_State) :
 				exit()
 
 		Game_Screen.fill(Black)
-		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
+		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list , item_list )
 		Profile_Now.draw(Game_Screen)
-		hentai.draw(Game_Screen)
+		ok = hentai.draw(Game_Screen)
+		if ok :
+			Board.GenerateItem(Game_Screen , background_list , item_list)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :
