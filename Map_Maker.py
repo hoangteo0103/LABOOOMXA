@@ -10,7 +10,7 @@ for i in range(6):
 	Image_tmp = pygame.transform.scale(Image_tmp, (Cell_Width, Cell_Height))
 	Image.append(Image_tmp)
 running = True 
-gg = Button( 16*48, 16 * 48 ,Image[0] , 1)
+gg = Button( 18*48, 0 * 48 ,Image[0] , 1)
 Board_File = open(f'Game_Data/Image/Map_1/Map.txt')
 Str = Board_File.read()
 
