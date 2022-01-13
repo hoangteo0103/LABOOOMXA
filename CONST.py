@@ -12,6 +12,8 @@ Game_Window_Height = 720
 #Const Font 
 font_player = pygame.font.Font('Game_Data/Font/font2.ttf', 25)
 font_item = pygame.font.Font('Game_Data/Font/font5.ttf', 25)
+font_quit = pygame.font.Font('Game_Data/Font/font5.ttf', 45)
+
 
 
 # Color Const 
