@@ -13,16 +13,6 @@ class Button() :
 		self.clicked = False
 
 	def draw(self , screen):
-		pos = pygame.mouse.get_pos()
-		if self.rect.collidepoint(pos) :
-			self.image.set_alpha(255)
-		else:
-			self.image.set_alpha(200)
-
-		if self.rect.collidepoint(pos):
-			self.image.set_alpha(255)
-		else:
-			self.image.set_alpha(220)
 		screen.blit(self.image , (self.rect.x , self.rect.y))
 
 	def isClicked(self , screen): 
