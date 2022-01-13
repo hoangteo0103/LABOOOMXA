@@ -1,6 +1,7 @@
 from List_Modunle import *
 import Main_Menu_Window
 from Profile import * 
+from Boss import * 
 
 def Run() :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
@@ -26,7 +27,7 @@ def Run() :
 	# Variable to keep our game loop running
 	running = True	
 	clock = pygame.time.Clock()
-
+	hentai = Boss(595 , 288)
 	Board  = Play_Board(1 ,background_list , destrucable_list , undestrucable_list )
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
@@ -45,7 +46,7 @@ def Run() :
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list)
 		Profile_Now.draw(Game_Screen)
-
+		hentai.draw(Game_Screen)
 		if len(explosion_list) > 0 :
 				for t in explosion_list :
 					if t.is_denotated() == True :

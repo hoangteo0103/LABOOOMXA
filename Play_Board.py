@@ -68,7 +68,8 @@ class Play_Board():
 			screen.blit(tile[0] , tile[1])
 		for tile in undestrucable_list :
 			screen.blit(self.Image[0] , tile[1])
-			screen.blit(tile[0] , tile[1])
+			if not (tile[1].x >= 600 and tile[1].y >= 288 and tile[1].x <= 744 and tile[1].y <= 432) :
+				screen.blit(tile[0] , tile[1])
 		
 
 

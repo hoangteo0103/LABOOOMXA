@@ -43,7 +43,7 @@ while running:
 			if(pygame.mouse.get_pressed()[0] == 0) : 
 				clicked[i][j] = False 
 			if action :
-				Board[i][j] = (Board[i][j] + 1) % 6 
+				Board[i][j] = (Board[i][j] + 1) % 8
 			img = Image[Board[i][j]]
 			rect = img.get_rect()
 			rect.x = j * 48 
