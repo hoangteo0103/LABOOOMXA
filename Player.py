@@ -64,7 +64,7 @@ class Player() :
 						if(x == X and y == Y): kq = False
 
 					if kq == True:
-						bomb_list.append(bomb_now)
+						bomb_list.append([bomb_now , 0])
 						self.player_bomb_list.append(bomb_now)
 			if key[Key_List[Player_Key[skin_id][1]]] and not storm:
 				dx -= self.speed
@@ -161,6 +161,11 @@ class Player() :
 				if(tile[1].colliderect(self.rect)) : 
 					Num_Collide += 1
 					Pos_Collide = tile[1]
+			for tile in bomb_list:
+				if tile[1] == 1:
+					if(tile[0].rect.colliderect(self.rect)) : 
+						Num_Collide += 1
+						Pos_Collide = tile[0].rect
 			if (dx != 0) or (dy != 0):
 				if Num_Collide > 0:
 					self.rect.x -= dx
@@ -195,28 +200,20 @@ class Player() :
 
 			#handle colision 
 			is_collission  = 0 
-			x = (self.rect.x - 264) // 48
-			y = (self.rect.y) // 48
 			if len(bomb_list) > 0 :
 				for t in bomb_list :
-					bomb_x = (t.rect.x - 264) // 48
-					bomb_y = (t.rect.y) // 48
-					if t.rect.colliderect(self.rect) and t.is_denotated() == True  :
+					if t[0].rect.colliderect(self.rect) and t[0].is_denotated() == True  :
 						is_collission = 1 
 						if (self.shield == 1) :
 							bomb_list.remove(t)
 			if len(explosion_list) > 0 :
 				for t in explosion_list :
-					ex_x = (t.rect.x - 264) // 48
-					ex_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) and t.render == True and t.denotated == False  :
 						is_collission = 1 
 						if (self.shield == 1) :
 							explosion_list.remove(t)
 			if len(storm_list) > 0 :
 				for t in storm_list :
-					st_x = (t.rect.x - 264) // 48
-					st_y = (t.rect.y) // 48
 					if t.rect.colliderect(self.rect) :
 						is_collission = 1 
 						if (self.shield == 1) :

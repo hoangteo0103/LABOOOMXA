@@ -52,7 +52,13 @@ def Run() :
 						explosion_list.remove(t)
 		if len(bomb_list) > 0 :
 			for t in bomb_list :
-				if t.draw(Game_Screen,background_list , destrucable_list , undestrucable_list , item_list) == True :
+				if t[1] == 0:
+					isWall = 1
+					for i in range(2):
+						if t[0].rect.colliderect(Player_List[i].rect):
+							isWall = 0
+					t[1] = isWall
+				if t[0].draw(Game_Screen,background_list , destrucable_list , undestrucable_list , item_list) == True :
 					bomb_list.remove(t)
 		if len(item_list) > 0 :
 			for t in item_list :
