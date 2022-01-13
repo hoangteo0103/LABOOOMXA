@@ -6,12 +6,12 @@ Board = [[0 for i in range(17)] for j in range(15)]
 clicked = [[False for i in range(17)] for j in range(15)]
 screen = pygame.display.set_mode((20 * 48 , 20 * 48))
 for i in range(8):
-	Image_tmp = pygame.image.load(f'Game_Data/Image/Map_1/tile_{i}.png')
+	Image_tmp = pygame.image.load(f'Game_Data/Image/Map_2/tile_{i}.png')
 	Image_tmp = pygame.transform.scale(Image_tmp, (Cell_Width, Cell_Height))
 	Image.append(Image_tmp)
 running = True 
 gg = Button( 18*48, 0 * 48 ,Image[0] , 1)
-Board_File = open(f'Game_Data/Image/Map_1/Map.txt')
+Board_File = open(f'Game_Data/Image/Map_2/Map.txt')
 Str = Board_File.read()
 
 for t in range(0, len(Str)):
@@ -43,7 +43,7 @@ while running:
 			if(pygame.mouse.get_pressed()[0] == 0) : 
 				clicked[i][j] = False 
 			if action :
-				Board[i][j] = (Board[i][j] + 1) % 8
+				Board[i][j] = (Board[i][j] + 7) % 8
 			img = Image[Board[i][j]]
 			rect = img.get_rect()
 			rect.x = j * 48 
@@ -53,7 +53,7 @@ while running:
 
 	gg.draw(screen)
 	if (gg.isClicked(screen)) :
-		with open('Game_Data/Image/Map_1/Map.txt', "w") as o:
+		with open('Game_Data/Image/Map_2/Map.txt', "w") as o:
 			for i in range(15) :
 				for j in range(17) :
 					o.write(str(Board[i][j]))

@@ -68,7 +68,7 @@ def Run(Map_State) :
 			for t in bomb_list :
 				if t[1] == 0:
 					isWall = 1
-					for i in range(2):
+					for i in range(4):
 						if t[0].rect.colliderect(Player_List[i].rect):
 							isWall = 0
 					t[1] = isWall
@@ -81,7 +81,7 @@ def Run(Map_State) :
 			for t in storm_list :
 				if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :
 					storm_list.remove(t)
-		for i in range(2):
+		for i in range(4):
 			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
 				death_counter[0]+=1
 				if(death_counter[0] > death_cooldown) :

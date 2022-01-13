@@ -12,7 +12,7 @@ def Run() :
 	Left_Button = Button(100, 335, Left_Image, 1)
 	Right_Button = Button(935, 335, Right_Image, 1)
 
-	Num_Map = 1
+	Num_Map = 2
 	Cur_Map = 0
 
 	pygame.time.delay(300)
@@ -51,9 +51,8 @@ def Run() :
 			Cur_Map += 1
 			Cur_Map %= Num_Map
 
-		for i in range(0 , Num_Map):
-			if Map_Button_List[i].isClicked(Map_Screen):
-				Game_Window.Run(i + 1)
-				exit()
+		if Map_Button_List[Cur_Map].isClicked(Map_Screen):
+			Game_Window.Run(Cur_Map + 1)
+			exit()
 		
 		pygame.display.update()
