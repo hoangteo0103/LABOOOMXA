@@ -15,6 +15,9 @@ class Boss():
 		self.rect = self.image.get_rect()
 		self.rect.x = x 
 		self.rect.y = y 
+
+		if map_state == 2:
+			self.rect.x += 12.5
 	def draw(self , screen) :
 		ok = False 
 		self.counter+=1 
