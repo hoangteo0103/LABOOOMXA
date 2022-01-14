@@ -1,8 +1,11 @@
 from List_Modunle import * 
 import pygame 
 class Boss():
-	def __init__(self, x , y ):
-		self.frames = boss_frames
+	def __init__(self, x , y , map_state):
+		if map_state == 1:
+			self.frames = boss_frames
+		if map_state == 2:
+			self.frames = Death_frames
 		self.index = 0 
 		self.counter = 0 
 		self.delay = 0.6 

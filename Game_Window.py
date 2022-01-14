@@ -28,7 +28,7 @@ def Run(Map_State) :
 	# Variable to keep our game loop running
 	running = True	
 	clock = pygame.time.Clock()
-	hentai = Boss(595 , 288)
+	Game_boss = Boss(595 , 288, Map_State)
 	Board  = Play_Board(Map_State ,background_list , destrucable_list , undestrucable_list )
 	# game loop
 	death_counter = [0 , 0 , 0 , 0 ]
@@ -47,7 +47,7 @@ def Run(Map_State) :
 		Game_Screen.fill(Black)
 		Board.Draw_Board(Game_Screen ,background_list , destrucable_list , undestrucable_list ,portal_list , item_list )
 		Profile_Now.draw(Game_Screen)
-		ok = hentai.draw(Game_Screen)
+		ok = Game_boss.draw(Game_Screen)
 		if ok :
 			Board.GenerateSpawn(Game_Screen , background_list , item_list , spawn_list)
 		

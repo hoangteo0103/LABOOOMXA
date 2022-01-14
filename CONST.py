@@ -66,7 +66,7 @@ storm_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/storm
 boss_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/test/test-{i}.png") , (144 ,144)) for i in range(0,52)]
 spawn_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/spawn_effect/spawn_effect-{i}.png") , (48 ,48)) for i in range(0,61)]
 portal_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/portal/portal-{i}.png") , (48 ,48)) for i in range(0,9)]
-
+Death_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/Angel_of_Death/Angel-{i}.png'), (144, 144)) for i in range(0, 61)]
 
 bubble_image = pygame.transform.scale(pygame.image.load("Game_Data/Image/Item/bubble.png"), (48, 48))
 bubble_image.set_colorkey((100, 100,100))
