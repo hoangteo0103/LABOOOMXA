@@ -3,6 +3,7 @@ import Main_Menu_Window
 from Play_Board import *
 
 def Run():
+	pygame.time.delay(300)
 	Setting_Screen = pygame.display.set_mode((Setting_Window_Width , Setting_Window_Height))
 	Setting_Screen.fill((120 , 120 , 120))
 

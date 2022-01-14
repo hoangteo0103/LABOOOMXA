@@ -8,6 +8,8 @@ class Play_Board():
 	Board = [[-1 for i in range(20)] for j in range(20)]
 
 	def __init__(self, Map_State, background_list , destrucable_list , undestrucable_list):
+		self.Image = []
+		self.Board = [[-1 for i in range(20)] for j in range(20)]
 		for i in range(8):
 			Image_tmp = pygame.image.load(f'Game_Data/Image/Map_{Map_State}/tile_{i}.png')
 			Image_tmp = pygame.transform.scale(Image_tmp, (Cell_Width, Cell_Height))
