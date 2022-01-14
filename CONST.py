@@ -14,6 +14,7 @@ font_player = pygame.font.Font('Game_Data/Font/font2.ttf', 25)
 font_item = pygame.font.Font('Game_Data/Font/font5.ttf', 25)
 font_quit = pygame.font.Font('Game_Data/Font/font5.ttf', 45)
 font_map = pygame.font.Font('Game_Data/Font/font5.ttf', 55)
+font_character = pygame.font.Font('Game_Data/Font/font5.ttf', 55)
 
 
 # Color Const 
@@ -111,3 +112,7 @@ for i in ('left alt' , 'right alt' , 'capslock' , 'left ctrl' , 'right ctrl' , '
 	height = Image.get_height() 
 	Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
 	Key_Image.append(Image)
+
+
+
+# Select Character
