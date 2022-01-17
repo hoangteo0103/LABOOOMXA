@@ -36,7 +36,7 @@ class Player() :
 
 		if alived == 1 : 
 			key = pygame.key.get_pressed()
-			if key[Key_List[Player_Key[skin_id][0]]] :
+			if key[Key_List[Player_Key[skin_id][4]]] :
 				if self.storm == 1 :
 					dire = 3 
 					if key[Key_List[Player_Key[skin_id][1]]]:
@@ -80,7 +80,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -1
-			elif key[Key_List[Player_Key[skin_id][2]]] and not storm:
+			elif key[Key_List[Player_Key[skin_id][3]]] and not storm:
 				dx += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -90,7 +90,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 1
-			elif key[Key_List[Player_Key[skin_id][3]]] and not storm:
+			elif key[Key_List[Player_Key[skin_id][0]]] and not storm:
 				dy -= self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -100,7 +100,7 @@ class Player() :
 				self.counter_idle = -1 
 				self.inMovement = 1 
 				self.direction = -2
-			elif key[Key_List[Player_Key[skin_id][4]]]and not storm:
+			elif key[Key_List[Player_Key[skin_id][2]]]and not storm:
 				dy += self.speed
 				if self.inMovement == 1 :
 					self.counter_move += 1
@@ -110,7 +110,7 @@ class Player() :
 				self.counter_idle = -1
 				self.inMovement = 1
 				self.direction = 2
-			if key[Key_List[Player_Key[skin_id][1]]] == False and key[Key_List[Player_Key[skin_id][2]]] == False and key[Key_List[Player_Key[skin_id][3]]] == False and key[Key_List[Player_Key[skin_id][4]]] == False:
+			if key[Key_List[Player_Key[skin_id][1]]] == False and key[Key_List[Player_Key[skin_id][2]]] == False and key[Key_List[Player_Key[skin_id][3]]] == False and key[Key_List[Player_Key[skin_id][0]]] == False:
 				self.inMovement = 0
 				self.counter_move = 0 
 				self.index_idle = (self.index_idle + 1) % 4

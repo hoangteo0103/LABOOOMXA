@@ -15,6 +15,7 @@ font_item = pygame.font.Font('Game_Data/Font/font5.ttf', 25)
 font_quit = pygame.font.Font('Game_Data/Font/font5.ttf', 45)
 font_map = pygame.font.Font('Game_Data/Font/font5.ttf', 55)
 font_character = pygame.font.Font('Game_Data/Font/font5.ttf', 55)
+font_key = pygame.font.Font('Game_Data/Font/font5.ttf', 20)
 
 
 # Color Const 
@@ -80,39 +81,44 @@ Cell_Height = 48
 
 # Key Const
 Player_Key = []
-Player_Key.append([15 , 10 , 13 , 32 , 28])
-Player_Key.append([40 , 45 , 46 , 47 , 48])
-Player_Key.append([1 , 2 , 3 , 4 , 5])
-Player_Key.append([42 , 19 , 21 , 18 , 20])
+Player_Key.append([32 , 10 , 28 , 13 , 15])
+Player_Key.append([47 , 45 , 48 , 46 , 40])
+Player_Key.append([4 , 2 , 5 , 3 , 1])
+Player_Key.append([18 , 19 , 20 , 21 , 42])
 
-Key_Image_Scale = 4
-Empty_Key_Image = pygame.image.load('Game_Data/Image/Setting_Image/button.png')
-Empty_Key_Image = pygame.transform.scale(Empty_Key_Image , (int(Empty_Key_Image.get_width() * Key_Image_Scale) , int(Empty_Key_Image.get_height() * Key_Image_Scale)))
+
+Empty_Key_Image1 = pygame.image.load('Game_Data/Image/Setting_Image/button.png')
+Empty_Key_Image2 = pygame.image.load('Game_Data/Image/Setting_Image/button2.png')
+Key_Str = []
 Key_List = []
-Key_Image = []
-Key_Pos = [10 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 23 , 41 , 38 , 25 , 14 , 26 , 27 , 28 , 19 , 29 , 30 , 31 , 43 , 42 , 20 , 21 , 12 , 15 , 24 , 16 , 18 , 40 , 13 , 37 , 17 , 36 , 35 , 44 , 11 , 34 , 45 , 22 , 32 , 39 , 0 , 46 , 48 , 33 , 47]
+# Key_Image = []
+# Key_Pos = [10 , 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 , 9 , 23 , 41 , 38 , 25 , 14 , 26 , 27 , 28 , 19 , 29 , 30 , 31 , 43 , 42 , 20 , 21 , 12 , 15 , 24 , 16 , 18 , 40 , 13 , 37 , 17 , 36 , 35 , 44 , 11 , 34 , 45 , 22 , 32 , 39 , 0 , 46 , 48 , 33 , 47]
 for i in range(10):
+	Key_Str.append(str(i))
 	Key_List.append(pygame.key.key_code(str(i)))
-	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
-	width = Image.get_width()
-	height = Image.get_height() 
-	Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
-	Key_Image.append(Image)
+	# Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
+	# width = Image.get_width()
+	# height = Image.get_height() 
+	# Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
+	# Key_Image.append(Image)
 for i in range(97 , 123):
+	Key_Str.append(chr(i))
 	Key_List.append(pygame.key.key_code(chr(i)))
-	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{chr(i)}.png')
-	width = Image.get_width()
-	height = Image.get_height() 
-	Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
-	Key_Image.append(Image)
+	# Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{chr(i)}.png')
+	# width = Image.get_width()
+	# height = Image.get_height() 
+	# Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
+	# Key_Image.append(Image)
 for i in ('left alt' , 'right alt' , 'capslock' , 'left ctrl' , 'right ctrl' , 'left shift' , 'right shift' , 'space' , 'tab' , 'left' , 'right' , 'up' , 'down'):
+	Key_Str.append(i)
 	Key_List.append(pygame.key.key_code(i))
-	Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
-	width = Image.get_width()
-	height = Image.get_height() 
-	Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
-	Key_Image.append(Image)
+	# Image = pygame.image.load(f'Game_Data/Image/Setting_Image/key_{i}.png')
+	# width = Image.get_width()
+	# height = Image.get_height() 
+	# Image = pygame.transform.scale(Image , (int(width * Key_Image_Scale) , int(height * Key_Image_Scale)))
+	# Key_Image.append(Image)
 
 
 
 # Select Character
+Character_Coord = [[40 , 75] , [580 , 75] , [40 , 365] , [580 , 365]]
