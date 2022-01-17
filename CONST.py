@@ -65,7 +65,7 @@ down_explosion = [pygame.transform.rotate(left_explosion[i] , 90) for i in range
 explosion_frames = [left_explosion , right_explosion , up_explosion , down_explosion ]
 storm_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/storm/storm-{i}.png") , (48 ,48)) for i in range(0,30)]
 boss_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/test/test-{i}.png") , (144 ,144)) for i in range(0,52)]
-spawn_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/spawn_effect/spawn_effect-{i}.png") , (48 ,48)) for i in range(0,61)]
+spawn_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/spawn_effect/effect-{i}.png") , (48 ,48)) for i in range(0,61)]
 portal_frames = [pygame.transform.scale(pygame.image.load(f"Game_Data/Image/portal/portal-{i}.png") , (48 ,48)) for i in range(0,9)]
 Death_frames = [pygame.transform.scale(pygame.image.load(f'Game_Data/Image/Angel_of_Death/Angel-{i}.png'), (144, 144)) for i in range(0, 61)]
 
