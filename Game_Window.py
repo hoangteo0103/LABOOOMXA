@@ -5,9 +5,11 @@ from Boss import *
 
 def Run(Map_State) :
 	Game_Screen = pygame.display.set_mode((Game_Window_Width, Game_Window_Height))
-	Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
+	# Player_List = [Player(312 , 48 , 0) , Player(984 , 48 , 1) , Player(312 , 624 , 2) , Player(984 , 624 , 3)]
 	Player_Coord = [(312 , 48) , (984 , 48) , (312 , 624) , (984 , 624)]
-	
+	Player_List = []
+	for i in range(4):
+		Player_List.append(Player(Player_Coord[i][0] , Player_Coord[i][1] , Character_List[i].Cur_Skin))
 	
 	
 	portal_list = []
@@ -83,14 +85,15 @@ def Run(Map_State) :
 				if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :
 					storm_list.remove(t)
 		for i in range(4):
-			if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
-				death_counter[0]+=1
-				if(death_counter[0] > death_cooldown) :
-					death_counter[0] = 0 
-					Player_List[i].alived = 1 
-					Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
-			if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
-				Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list , portal_list , item_list , i ,Player_List[i].player_lives)
+			if Character_List[i].isAdd == True:
+				if(Player_List[i].alived == 0 and Player_List[i].player_lives >= 1 ) :
+					death_counter[0]+=1
+					if(death_counter[0] > death_cooldown) :
+						death_counter[0] = 0 
+						Player_List[i].alived = 1 
+						Player_List[i].reset(Player_Coord[i][0] , Player_Coord[i][1] , i)
+				if(Player_List[i].alived == 1 and Player_List[i].player_lives >=1 ) :
+					Player_List[i].update(Player_List[i].alived,Game_Screen , bomb_list , explosion_list , background_list , destrucable_list , undestrucable_list ,storm_list , portal_list , item_list , i ,Player_List[i].player_lives)
 		
 		
 		pygame.display.update()

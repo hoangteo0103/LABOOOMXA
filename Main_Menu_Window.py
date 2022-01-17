@@ -4,6 +4,7 @@ import Game_Window
 import Map_Window
 import Quit_Window
 import Select_Character
+
 Play_Game_Button = Button(280 , 200 , Play_Button_Image , 1)
 Setting_Game_Button = Button(280 , 320 , Setting_Button_Image , 1)
 Instruction_Game_Button = Button(280 , 440 , Instruction_Button_Image , 1)

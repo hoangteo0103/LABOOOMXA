@@ -1,5 +1,5 @@
 from List_Modunle import *
-import Main_Menu_Window
+from CONST import *
 
 def cvert(Str):
 	if Str == 'left alt': return 'lalt'
@@ -96,3 +96,5 @@ class Character():
 			Screen.blit(self.Skin_List[self.Cur_Skin] , (self.Pos_Skin[0] , self.Pos_Skin[1]))
 		else:
 			self.Add_Button.draw(Screen)
+
+Character_List = [Character(i) for i in range(1 , 5)]

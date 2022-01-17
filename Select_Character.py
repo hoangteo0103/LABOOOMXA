@@ -3,7 +3,7 @@ import Map_Window
 import Main_Menu_Window
 from CONST import *
 from List_Modunle import *
-from Character import *
+# from Character import *
 
 def Run():
 	pygame.time.delay(300)
@@ -16,7 +16,6 @@ def Run():
 	text = font_character.render('select character' , True, White)
 
 	Go_Button = Button(440, 630, Go_image, 1)
-	Test = [Character(i) for i in range(1 , 5)]
 
 	while Running:
 		for event in pygame.event.get():
@@ -30,7 +29,7 @@ def Run():
 		Go_Button.draw(Select_Character_Screen)
 
 		for i in range (0 , 4):
-			Test[i].draw(Select_Character_Screen)
+			Character_List[i].draw(Select_Character_Screen)
 
 		if(Go_Button.isClicked(Select_Character_Screen)):
 			Running = False

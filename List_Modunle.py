@@ -7,6 +7,8 @@ from Bomb import *
 from Storm import *
 from Portal import *
 from Play_Board import *
+from CONST import *
+from Character import *
 import os
 x = 10
 y = 35
