@@ -10,7 +10,7 @@ class Boss():
 		self.counter = 0 
 		self.delay = 0.6 
 		self.item_counter = 0 
-		self.item_delay = 300
+		self.item_delay = 200
 		self.image = self.frames[0]
 		self.rect = self.image.get_rect()
 		self.rect.x = x 

@@ -76,7 +76,8 @@ def Run(Map_State) :
 					bomb_list.remove(t)
 		if len(item_list) > 0 :
 			for t in item_list :
-				t.draw(Game_Screen)
+				if t.draw(Game_Screen) == True : 
+					item_list.remove(t) 
 		if len(storm_list) > 0 :
 			for t in storm_list :
 				if t.draw(Game_Screen , destrucable_list , undestrucable_list ) == True :

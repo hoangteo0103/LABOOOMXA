@@ -6,6 +6,8 @@ class Item:
 		self.counter = 0
 		self.delay = 0.6 
 		self.index = 0
+		self.counter_erase = 0 
+		self.time_erase = 100 
 		self.sprite_sheet  = SpriteSheet(Item_Frame[state])
 		self.width = Item_Frame_Size[state][0]
 		self.height = Item_Frame_Size[state][1]
@@ -16,6 +18,9 @@ class Item:
 		self.rect.y = Y
 
 	def draw(self, screen) :
+		self.counter_erase+=1
+		if self.counter_erase > self.time_erase : 
+			return True 
 		self.counter += 1
 
 		if self.counter > self.delay:
@@ -28,4 +33,4 @@ class Item:
 		self.image = self.sprite_sheet.get_image(self.index , self.width , self.height , 1 , Black)
 		self.image = pygame.transform.scale(self.image , (48 ,48))
 		screen.blit(self.image, self.rect)
-			
+		return False 
