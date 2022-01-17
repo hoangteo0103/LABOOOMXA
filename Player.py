@@ -41,11 +41,11 @@ class Player() :
 					dire = 3 
 					if key[Key_List[Player_Key[skin_id][1]]]:
 						dire = -1 
-					if key[Key_List[Player_Key[skin_id][2]]]:
-						dire = 1 
 					if key[Key_List[Player_Key[skin_id][3]]]:
+						dire = 1 
+					if key[Key_List[Player_Key[skin_id][0]]]:
 						dire = -2 
-					if key[Key_List[Player_Key[skin_id][4]]]:
+					if key[Key_List[Player_Key[skin_id][2]]]:
 						dire = 2 
 					if dire!=3  :
 						storm = True
