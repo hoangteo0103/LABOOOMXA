@@ -68,7 +68,7 @@ class Character():
 					if pygame.key.get_pressed()[pygame.key.key_code(Key_Str[i])] == True:
 						self.Key_Text[self.Cur_Key] = cvert(Key_Str[i])
 						Player_Key[self.Id - 1][self.Cur_Key] = i
-						Cur_Key = -1
+						self.Cur_Key = -1
 						break
 
 			if self.Del_Button.isClicked(Screen) == True:
