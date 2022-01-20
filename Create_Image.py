@@ -1,23 +1,46 @@
 from PIL import Image
 import pygame
 
-# Crop Image
-
-for i in range(61):
-	origin_image_path = f'Game_Data/Image/spawn_effect/spawn_effect-{i}.png'
-	save_image_path = f'Game_Data/Image/spawn_effect/effect-{i}.png'
+# Crop an Image
+def Crop_an_Image():
+	origin_image_path = f'Game_Data/Image/item/test.jpg'
+	save_image_path = f'Game_Data/Image/item/test.png'
 
 	origin_image = Image.open(origin_image_path)
 
-	left = 170
-	top = 115
-	right = 500
-	bottom = 350
+	Row = 220
+	Col = 93
 
-	save_image = origin_image.crop((left, top, right, bottom))
-	save_image.save(save_image_path)
+	left = 15
+	top = 20
+	right = 205
+	bottom = 93
 
-# Shows the image in image viewer
-# save_image.show()
+	for i in range(6):
+		save_image = origin_image.crop((Row * i + left, top, Row * i + right, bottom))
+		save_image.show()
+	# save_image.save(save_image_path)
 
-# save_image.save(save_image_path)
+# Crop more images
+def Crop_many_Images():
+	for i in range(7):
+		origin_image_path = f'Game_Data/Image/item/Item_4.png'
+		save_image_path = f'Game_Data/Image/item/Yasuo-{i}.png'
+
+		origin_image = Image.open(origin_image_path)
+
+		Row = 220
+		Col = 93
+
+		left = 15
+		top = 20
+		right = 205
+		bottom = 93
+
+		save_image = origin_image.crop((Row * i + left, top, Row * i + right, bottom))
+		# save_image.show()
+		save_image.save(save_image_path)
+
+# Crop_an_Image()
+
+Crop_many_Images()
