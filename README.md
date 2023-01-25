@@ -1,5 +1,5 @@
 # LABOOOMXA
-This is the LABOOOMXA game created by my group
+This is the LABOOOMXA game created by HCMUS group.
 
 ## Members
 * Tran Tuan Viet - HCMUS - 21APCS
@@ -7,7 +7,15 @@ This is the LABOOOMXA game created by my group
 * Hoang Nghia Viet - HCMUS - 21APCS
 
 ## Description
-The game is coded in Python 3 using the graphic library [Pygame](https://www.pygame.org/wiki/tutorials).
+The game is coded in Python 3 using the Graphic Library [Pygame](https://www.pygame.org/wiki/tutorials).
+
+This is multiplayer game which players need to kill each others until you are only one in the game so that you are winner.
+The map is a 2D-Map which including no destructed object such as walls, rocks, ... or destructed object such as trees, woodbox, ...
+
+To make the game more interesting, there are some items inside the destructed object or randomly generate in map in a range of time.
+The destructed object can be eliminated by using your bomb and then there might be an item for you to collect to improve your strength to kill the others.
+
+When you kill all other players, you are the champion of the game.
 
 ## Getting Started
 ### Installing
