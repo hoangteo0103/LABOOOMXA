@@ -25,6 +25,25 @@ The game is coded in Python 3 using the graphic library [Pygame](https://www.pyg
 * Remember to add all source codes to project before building and running
 
 ## Usage
+* Game Menu Screen
+<div align = "center">
+  <img src = "Game-Demo/Menu.PNG" style = "width: 50%;">
+</div>
+
+* Select Character Screen
+<div align = "center">
+  <img src = "Game-Demo/Select-Character.PNG" style = "width: 50%;">
+</div>
+
+* Select Map Screen
+<div align = "center">
+  <img src = "Game-Demo/Select-Map.PNG" style = "width: 50%;">
+</div>
+
+* Game Screen
+<div align = "center">
+  <img src = "Game-Demo/Game.PNG" style = "width: 50%;">
+</div>
 
 ## Contact
 Tran Tuan Viet - ttviet2805@gmail.com
