@@ -54,5 +54,5 @@ When you kill all other players, you are the champion of the game.
 </div>
 
 ## Contact
-Tran Tuan Viet - ttviet2805@gmail.com
-Hoang Nghia Viet - viethoangnghia@gmail.com
+* Tran Tuan Viet - ttviet2805@gmail.com
+* Hoang Nghia Viet - viethoangnghia@gmail.com
